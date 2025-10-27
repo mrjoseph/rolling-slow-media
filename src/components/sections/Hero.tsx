@@ -7,7 +7,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-red-900/20 to-transparent"></div>
 
       <div className="relative z-10 text-center max-w-4xl mx-auto">
-        <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight" style={{ fontFamily: "'Ostrich Sans', sans-serif" }}>
+        <h1 className="text-6xl md:text-7xl mb-6 leading-tight" style={{ fontFamily: "'Ostrich Sans Heavy', sans-serif", fontWeight: 900 }}>
           <span className="bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">
             Rolling Slow Media
           </span>

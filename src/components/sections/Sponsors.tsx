@@ -37,7 +37,7 @@ export default function Sponsors() {
   return (
     <section id="sponsors" className="py-20 px-4 bg-slate-800">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-5xl font-bold mb-4 text-center">
+        <h2 className="text-5xl font-bold mb-4 text-center" style={{ fontFamily: "'Ostrich Sans Heavy', sans-serif" }}>
           <span className="bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">
             Our Sponsors
           </span>
