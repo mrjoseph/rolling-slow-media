@@ -8,7 +8,7 @@ export default function Hero() {
 
             <div className="relative z-10 text-center max-w-4xl mx-auto">
                 <h1 className="text-6xl md:text-7xl mb-6 leading-tight text-white" style={{ fontFamily: "'Ostrich Sans Heavy', sans-serif", fontWeight: 900 }}>
-                    Rolling Slow <span style={{ color: '#ff1493' }}>MEDIA</span>
+                    Rolling Slow <span style={{ color: '#e35e9f' }}>MEDIA</span>
                 </h1>
 
                 <p className="text-xl md:text-2xl text-gray-300 mb-4">
@@ -31,7 +31,8 @@ export default function Hero() {
                     </a>
                     <a
                         href="#next-event"
-                        className="px-8 py-3 bg-pink-600 hover:bg-pink-700 rounded-lg font-semibold transition-colors"
+                        className="px-8 py-3 rounded-lg font-semibold transition-colors hover:opacity-90"
+                        style={{ backgroundColor: '#e35e9f' }}
                     >
                         Next Event
                     </a>
