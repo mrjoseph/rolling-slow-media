@@ -15,6 +15,31 @@ export default function Hero() {
                     Epic Car Culture | YouTube Channel
                 </p>
 
+                {/* Social / platform icons (links) */}
+                <div className="flex items-center justify-center gap-4 mb-6">
+                    <a href="#" aria-label="YouTube" className="w-8 h-8 inline-block hover:opacity-90 transition-opacity">
+                        <img src="/icons/youtube.svg" alt="YouTube" className="w-full h-full" />
+                    </a>
+                    <a href="#" aria-label="Instagram" className="w-8 h-8 inline-block hover:opacity-90 transition-opacity">
+                        <img src="/icons/instagram.svg" alt="Instagram" className="w-full h-full" />
+                    </a>
+                    <a href="#" aria-label="TikTok" className="w-8 h-8 inline-block hover:opacity-90 transition-opacity">
+                        <img src="/icons/tiktok.svg" alt="TikTok" className="w-full h-full" />
+                    </a>
+                    <a href="#" aria-label="Facebook" className="w-8 h-8 inline-block hover:opacity-90 transition-opacity">
+                        <img src="/icons/facebook.svg" alt="Facebook" className="w-full h-full" />
+                    </a>
+                    <a href="#" aria-label="WhatsApp" className="w-8 h-8 inline-block hover:opacity-90 transition-opacity">
+                        <img src="/icons/whatsapp.svg" alt="WhatsApp" className="w-full h-full" />
+                    </a>
+                    <a href="#" aria-label="Email" className="w-8 h-8 inline-block hover:opacity-90 transition-opacity">
+                        <img src="/icons/email.svg" alt="Email" className="w-full h-full" />
+                    </a>
+                    <a href="#" aria-label="Eventbrite" className="w-8 h-8 inline-block hover:opacity-90 transition-opacity">
+                        <img src="/icons/eventbrite.svg" alt="Eventbrite" className="w-full h-full" />
+                    </a>
+                </div>
+
                 <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
                     Experience the world of automotive excellence with in-depth reviews,
                     events, and raw car culture content.
