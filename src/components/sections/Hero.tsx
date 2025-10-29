@@ -4,11 +4,12 @@ export default function Hero() {
     return (
         <section className="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden bg-slate-900">
             {/* Background Video - Desktop */}
-            <div className="hidden md:block absolute inset-0 w-full h-full overflow-hidden">
+            <div className="hidden md:block absolute inset-0 w-full h-full overflow-hidden bg-slate-800">
                 <video
                     autoPlay
                     muted
                     loop
+                    playsInline
                     className="w-full h-full object-cover"
                 >
                     <source src="/video/background-video.mp4" type="video/mp4" />
@@ -16,11 +17,12 @@ export default function Hero() {
             </div>
 
             {/* Background Video - Mobile */}
-            <div className="md:hidden absolute inset-0 w-full h-full overflow-hidden flex items-center justify-center">
+            <div className="md:hidden absolute inset-0 w-full h-full overflow-hidden flex items-center justify-center bg-slate-800">
                 <video
                     autoPlay
                     muted
                     loop
+                    playsInline
                     className="w-full h-full object-cover"
                 >
                     <source src="/video/background-portrait.mp4" type="video/mp4" />
