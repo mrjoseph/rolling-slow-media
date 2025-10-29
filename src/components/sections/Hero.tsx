@@ -3,15 +3,37 @@
 export default function Hero() {
     return (
         <section className="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden bg-slate-900">
-            {/* Background gradient effect */}
-            <div className="absolute inset-0 bg-gradient-to-b from-slate-800 to-slate-900"></div>
+            {/* YouTube Video Background */}
+            <div className="absolute inset-0 w-full h-full overflow-hidden">
+                <iframe
+                    src="https://www.youtube.com/embed/kM2OORgnE-Y?autoplay=1&mute=1&loop=1&playlist=kM2OORgnE-Y&controls=0&modestbranding=1&rel=0&fs=0&showinfo=0"
+                    title="Rolling Slow Media"
+                    frameBorder="0"
+                    allow="autoplay; fullscreen"
+                    style={{
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        width: '120%',
+                        height: '120%',
+                        transform: 'translate(-50%, -50%)',
+                        pointerEvents: 'none',
+                    }}
+                />
+            </div>
+
+
+            {/* Dark overlay for readability */}
+            <div className="absolute inset-0 bg-black/50"></div>
 
             <div className="relative z-10 text-center max-w-4xl mx-auto">
                 <h1 className="text-6xl md:text-7xl mb-6 leading-tight text-white" style={{ fontFamily: "'Ostrich Sans Heavy', sans-serif", fontWeight: 900 }}>
                     Rolling Slow <span style={{ color: '#e35e9f' }}>MEDIA</span>
                 </h1>
 
-        
+                <p className="text-xl md:text-2xl text-gray-300 mb-4">
+                    Car review, coffee meets, and driving tours
+                </p>
 
                 {/* Social / platform icons (links) */}
                 <div className="flex items-center justify-center gap-4 mb-6">
