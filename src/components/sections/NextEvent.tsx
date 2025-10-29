@@ -103,12 +103,11 @@ export default function NextEvent() {
                     </div>
 
                     <div className="bg-slate-700 rounded-lg h-96 flex items-center justify-center border border-slate-600">
-                        <div className="text-center">
-                            <p className="text-gray-400 text-lg">Event Image Placeholder</p>
-                            <p className="text-gray-500 text-sm mt-2">
-                                Replace with actual event image
-                            </p>
-                        </div>
+                        <img 
+                            src="/images/PSMC-LOGO-transparanat.png" 
+                            alt="PSMC Logo" 
+                            className="w-full h-full object-contain p-8"
+                        />
                     </div>
                 </div>
             </div>

@@ -75,32 +75,32 @@ export default function ContactUs() {
 
                 <div className="grid md:grid-cols-2 gap-12">
                     {/* Contact Information */}
-                    <div className="space-y-8">
+                    <div className="space-y-8 md:text-left text-center">
                         <div>
                             <h3 className="text-2xl font-bold mb-4">Contact Information</h3>
                             <div className="space-y-4">
-                                <div className="flex items-start gap-3">
-                                    <span className="text-red-500 text-xl">📧</span>
+                                <div className="flex md:flex-row flex-col items-center md:items-start gap-3">
                                     <div>
                                         <p className="text-gray-400 text-sm">Email</p>
                                         <a
-                                            href="mailto:contact@rollingsmedia.com"
+                                            href="mailto:rollinslowsocial@gmail.com"
                                             className="text-white hover:text-red-400 transition-colors"
                                         >
-                                            contact@rollingsmedia.com
+                                            rollinslowsocial@gmail.com
                                         </a>
                                     </div>
                                 </div>
 
-                                <div className="flex items-start gap-3">
-                                    <span className="text-red-500 text-xl">📱</span>
+                                <div className="flex md:flex-row flex-col items-center md:items-start gap-3">
                                     <div>
                                         <p className="text-gray-400 text-sm">Phone</p>
                                         <a
-                                            href="tel:+1234567890"
+                                            href="https://wa.me/447841465186"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                             className="text-white hover:text-red-400 transition-colors"
                                         >
-                                            +1 (234) 567-890
+                                            +447841465186
                                         </a>
                                     </div>
                                 </div>
@@ -110,7 +110,7 @@ export default function ContactUs() {
                         {/* Social Links */}
                         <div>
                             <h3 className="text-2xl font-bold mb-4">Follow Us</h3>
-                            <div className="flex gap-4">
+                            <div className="flex gap-4 md:justify-start justify-center">
                                 <a
                                     href="https://www.youtube.com/@RollingSlowMedia/videos"
                                     target="_blank"
