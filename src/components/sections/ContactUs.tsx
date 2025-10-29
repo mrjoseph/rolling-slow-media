@@ -61,8 +61,11 @@ export default function ContactUs() {
     };
 
     return (
-        <section id="contact" className="py-20 px-4 bg-slate-900">
-            <div className="max-w-4xl mx-auto">
+        <section id="contact" className="py-20 px-4 relative overflow-hidden bg-slate-900" style={{ backgroundImage: 'url(/images/background2.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
+            {/* Dark overlay */}
+            <div className="absolute inset-0 bg-slate-900/75"></div>
+            
+            <div className="max-w-4xl mx-auto relative z-10">
                 <h2 className="text-5xl font-bold mb-4 text-center text-white" style={{ fontFamily: "'Ostrich Sans Heavy', sans-serif" }}>
                     Get in Touch
                 </h2>
@@ -112,7 +115,7 @@ export default function ContactUs() {
                                     href="https://www.youtube.com/@RollingSlowMedia/videos"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-12 h-12 bg-white hover:bg-gray-200 rounded-lg flex items-center justify-center transition-colors"
+                                    className="w-12 h-12 bg-red-600 hover:bg-red-700 rounded-lg flex items-center justify-center transition-colors"
                                     title="YouTube"
                                 >
                                     <img src="/icons/youtube.svg" alt="YouTube" className="w-6 h-6" />
@@ -121,7 +124,7 @@ export default function ContactUs() {
                                     href="https://www.instagram.com/rollingslowmedia/#"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-12 h-12 bg-white hover:bg-gray-200 rounded-lg flex items-center justify-center transition-colors"
+                                    className="w-12 h-12 bg-pink-600 hover:bg-pink-700 rounded-lg flex items-center justify-center transition-colors"
                                     title="Instagram"
                                 >
                                     <img src="/icons/instagram.svg" alt="Instagram" className="w-6 h-6" />
@@ -130,7 +133,7 @@ export default function ContactUs() {
                                     href="https://www.tiktok.com/@rollinslowmedia"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-12 h-12 bg-white hover:bg-gray-200 rounded-lg flex items-center justify-center transition-colors"
+                                    className="w-12 h-12 bg-black hover:bg-gray-800 rounded-lg flex items-center justify-center transition-colors"
                                     title="TikTok"
                                 >
                                     <img src="/icons/tiktok.svg" alt="TikTok" className="w-6 h-6" />
@@ -139,7 +142,7 @@ export default function ContactUs() {
                                     href="https://wa.me/?text=Rolling%20Slow%20Media"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-12 h-12 bg-white hover:bg-gray-200 rounded-lg flex items-center justify-center transition-colors"
+                                    className="w-12 h-12 bg-green-600 hover:bg-green-700 rounded-lg flex items-center justify-center transition-colors"
                                     title="WhatsApp"
                                 >
                                     <img src="/icons/whatsapp.svg" alt="WhatsApp" className="w-6 h-6" />

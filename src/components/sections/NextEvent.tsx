@@ -14,8 +14,11 @@ export default function NextEvent() {
     };
 
     return (
-        <section id="next-event" className="py-20 px-4 bg-slate-800">
-            <div className="max-w-6xl mx-auto">
+        <section id="next-event" className="py-20 px-4 relative overflow-hidden bg-slate-900" style={{ backgroundImage: 'url(/images/background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
+            {/* Dark overlay */}
+            <div className="absolute inset-0 bg-slate-900/75"></div>
+            
+            <div className="max-w-6xl mx-auto relative z-10">
                 <h2 className="text-5xl font-bold mb-4 text-center text-white" style={{ fontFamily: "'Ostrich Sans Heavy', sans-serif" }}>
                     Next Event
                 </h2>
