@@ -11,43 +11,42 @@ export default function Hero() {
                     Rolling Slow <span style={{ color: '#e35e9f' }}>MEDIA</span>
                 </h1>
 
-                <p className="text-xl md:text-2xl text-gray-300 mb-4">
-                    Epic Car Culture | YouTube Channel
-                </p>
+        
 
                 {/* Social / platform icons (links) */}
                 <div className="flex items-center justify-center gap-4 mb-6">
-                    <a href="#" aria-label="YouTube" className="w-8 h-8 inline-block hover:opacity-90 transition-opacity">
+                    <a href="https://www.youtube.com/@RollingSlowMedia/videos" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="w-8 h-8 inline-block hover:opacity-90 transition-opacity">
                         <img src="/icons/youtube.svg" alt="YouTube" className="w-full h-full" />
                     </a>
-                    <a href="#" aria-label="Instagram" className="w-8 h-8 inline-block hover:opacity-90 transition-opacity">
+                    <a href="https://www.instagram.com/rollingslowmedia/#" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-8 h-8 inline-block hover:opacity-90 transition-opacity">
                         <img src="/icons/instagram.svg" alt="Instagram" className="w-full h-full" />
                     </a>
-                    <a href="#" aria-label="TikTok" className="w-8 h-8 inline-block hover:opacity-90 transition-opacity">
+                    <a href="https://www.tiktok.com/@rollinslowmedia" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="w-8 h-8 inline-block hover:opacity-90 transition-opacity">
                         <img src="/icons/tiktok.svg" alt="TikTok" className="w-full h-full" />
                     </a>
                     <a href="#" aria-label="Facebook" className="w-8 h-8 inline-block hover:opacity-90 transition-opacity">
                         <img src="/icons/facebook.svg" alt="Facebook" className="w-full h-full" />
                     </a>
-                    <a href="#" aria-label="WhatsApp" className="w-8 h-8 inline-block hover:opacity-90 transition-opacity">
+                    <a href="https://wa.me/07841465186" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="w-8 h-8 inline-block hover:opacity-90 transition-opacity">
                         <img src="/icons/whatsapp.svg" alt="WhatsApp" className="w-full h-full" />
                     </a>
-                    <a href="#" aria-label="Email" className="w-8 h-8 inline-block hover:opacity-90 transition-opacity">
+
+
+                    <a href="#contact" aria-label="Email" className="w-8 h-8 inline-block hover:opacity-90 transition-opacity">
                         <img src="/icons/email.svg" alt="Email" className="w-full h-full" />
                     </a>
-                    <a href="#" aria-label="Eventbrite" className="w-8 h-8 inline-block hover:opacity-90 transition-opacity">
+                    <a href="https://www.eventbrite.co.uk/e/porsches-supercars-modern-classics-regents-park-cars-coffee-tickets-1833380152389?aff=oddtdtcreator" target="_blank" rel="noopener noreferrer" aria-label="Eventbrite" className="w-8 h-8 inline-block hover:opacity-90 transition-opacity">
                         <img src="/icons/eventbrite.svg" alt="Eventbrite" className="w-full h-full" />
                     </a>
                 </div>
 
                 <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
-                    Experience the world of automotive excellence with in-depth reviews,
-                    events, and raw car culture content.
+                    Documenting car culture since 2023. Raw stories, epic events, and the passion behind every engine.
                 </p>
 
                 <div className="flex gap-4 justify-center flex-wrap">
                     <a
-                        href="https://youtube.com"
+                        href="https://www.youtube.com/@RollingSlowMedia/videos"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-8 py-3 bg-red-600 hover:bg-red-700 rounded-lg font-semibold transition-colors"

@@ -10,6 +10,8 @@ export default function ContactUs() {
         message: "",
     });
 
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState("");
     const [submitted, setSubmitted] = useState(false);
 
     const handleChange = (
@@ -21,19 +23,41 @@ export default function ContactUs() {
             ...formData,
             [e.target.name]: e.target.value,
         });
+        setError("");
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // Here you would typically send the form data to your backend
-        console.log("Form submitted:", formData);
-        setSubmitted(true);
-        setFormData({ name: "", email: "", subject: "", message: "" });
+        setIsLoading(true);
+        setError("");
 
-        // Reset the success message after 5 seconds
-        setTimeout(() => {
-            setSubmitted(false);
-        }, 5000);
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || "Failed to send message");
+            }
+
+            setSubmitted(true);
+            setFormData({ name: "", email: "", subject: "", message: "" });
+
+            // Reset the success message after 5 seconds
+            setTimeout(() => {
+                setSubmitted(false);
+            }, 5000);
+        } catch (err) {
+            setError(err instanceof Error ? err.message : "An error occurred");
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -77,18 +101,6 @@ export default function ContactUs() {
                                         </a>
                                     </div>
                                 </div>
-
-                                <div className="flex items-start gap-3">
-                                    <span className="text-red-500 text-xl">📍</span>
-                                    <div>
-                                        <p className="text-gray-400 text-sm">Address</p>
-                                        <p className="text-white">
-                                            123 Auto Street
-                                            <br />
-                                            Motor City, MC 12345
-                                        </p>
-                                    </div>
-                                </div>
                             </div>
                         </div>
 
@@ -97,40 +109,40 @@ export default function ContactUs() {
                             <h3 className="text-2xl font-bold mb-4">Follow Us</h3>
                             <div className="flex gap-4">
                                 <a
-                                    href="https://youtube.com"
+                                    href="https://www.youtube.com/@RollingSlowMedia/videos"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-12 h-12 bg-red-600 hover:bg-red-700 rounded-lg flex items-center justify-center transition-colors"
+                                    className="w-12 h-12 bg-white hover:bg-gray-200 rounded-lg flex items-center justify-center transition-colors"
                                     title="YouTube"
                                 >
-                                    ▶
+                                    <img src="/icons/youtube.svg" alt="YouTube" className="w-6 h-6" />
                                 </a>
                                 <a
-                                    href="https://instagram.com"
+                                    href="https://www.instagram.com/rollingslowmedia/#"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-12 h-12 bg-red-600 hover:bg-red-700 rounded-lg flex items-center justify-center transition-colors"
+                                    className="w-12 h-12 bg-white hover:bg-gray-200 rounded-lg flex items-center justify-center transition-colors"
                                     title="Instagram"
                                 >
-                                    📷
+                                    <img src="/icons/instagram.svg" alt="Instagram" className="w-6 h-6" />
                                 </a>
                                 <a
-                                    href="https://twitter.com"
+                                    href="https://www.tiktok.com/@rollinslowmedia"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-12 h-12 bg-red-600 hover:bg-red-700 rounded-lg flex items-center justify-center transition-colors"
-                                    title="Twitter"
+                                    className="w-12 h-12 bg-white hover:bg-gray-200 rounded-lg flex items-center justify-center transition-colors"
+                                    title="TikTok"
                                 >
-                                    𝕏
+                                    <img src="/icons/tiktok.svg" alt="TikTok" className="w-6 h-6" />
                                 </a>
                                 <a
-                                    href="https://facebook.com"
+                                    href="https://wa.me/?text=Rolling%20Slow%20Media"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-12 h-12 bg-red-600 hover:bg-red-700 rounded-lg flex items-center justify-center transition-colors"
-                                    title="Facebook"
+                                    className="w-12 h-12 bg-white hover:bg-gray-200 rounded-lg flex items-center justify-center transition-colors"
+                                    title="WhatsApp"
                                 >
-                                    f
+                                    <img src="/icons/whatsapp.svg" alt="WhatsApp" className="w-6 h-6" />
                                 </a>
                             </div>
                         </div>
@@ -221,10 +233,17 @@ export default function ContactUs() {
 
                             <button
                                 type="submit"
-                                className="w-full px-6 py-3 bg-red-600 hover:bg-red-700 rounded-lg font-semibold transition-colors"
+                                disabled={isLoading}
+                                className="w-full px-6 py-3 bg-red-600 hover:bg-red-700 rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                Send Message
+                                {isLoading ? "Sending..." : "Send Message"}
                             </button>
+
+                            {error && (
+                                <div className="p-4 bg-red-900/30 border border-red-500 rounded-lg text-red-400 text-sm">
+                                    ✗ {error}
+                                </div>
+                            )}
 
                             {submitted && (
                                 <div className="p-4 bg-green-900/30 border border-green-500 rounded-lg text-green-400 text-sm">
