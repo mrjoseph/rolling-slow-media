@@ -101,6 +101,10 @@ export default function Hero() {
                         </svg>
                     </a>
                 </div>
+
+                <p className="text-sm text-gray-400 mt-6">
+                    Interested in sponsoring? <a href="#sponsors" className="text-white hover:text-red-400 transition-colors font-semibold">View our sponsors</a>
+                </p>
             </div>
 
             {/* Scroll indicator */}
