@@ -98,7 +98,7 @@ export default function Sponsors() {
         <div className="mt-12 text-center">
           <p className="text-gray-400 mb-4">Interested in sponsoring?</p>
           <a
-            href="#contact"
+            href="/sponsors-pitch"
             className="inline-block px-8 py-3 bg-red-600 hover:bg-red-700 rounded-lg font-semibold transition-colors text-white"
           >
             Become a Sponsor
