@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+
+export default function SponsorsPitch() {
     const [formData, setFormData] = useState({
         companyName: "",
         contactName: "",
