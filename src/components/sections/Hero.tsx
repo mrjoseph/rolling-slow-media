@@ -53,7 +53,7 @@ export default function Hero() {
                     <a href="https://www.tiktok.com/@rollinslowmedia" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="w-10 h-10 bg-black hover:bg-gray-800 rounded-lg flex items-center justify-center transition-colors">
                         <img src="/icons/tiktok.svg" alt="TikTok" className="w-5 h-5" />
                     </a>
-                    <a href="#" aria-label="Facebook" className="w-10 h-10 bg-blue-600 hover:bg-blue-700 rounded-lg flex items-center justify-center transition-colors">
+                    <a href="https://www.facebook.com/share/17YWQRa8Dd/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-10 h-10 bg-blue-600 hover:bg-blue-700 rounded-lg flex items-center justify-center transition-colors">
                         <img src="/icons/facebook.svg" alt="Facebook" className="w-5 h-5" />
                     </a>
                     <a href="https://wa.me/07841465186" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="w-10 h-10 bg-green-600 hover:bg-green-700 rounded-lg flex items-center justify-center transition-colors">
