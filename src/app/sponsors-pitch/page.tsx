@@ -162,17 +162,10 @@ ${formData.message}
                             <div className="bg-slate-700 rounded-lg overflow-hidden border border-slate-600">
                                 <div className="aspect-square bg-slate-600 flex items-center justify-center relative">
                                     <img 
-                                        src="/images/coffee-cup-placeholder.png" 
+                                        src="/images/coffee-cup-example.jpg" 
                                         alt="Coffee Cup with QR Code" 
                                         className="w-full h-full object-cover"
                                     />
-                                    {/* Fallback if image doesn't exist */}
-                                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-600 text-gray-400">
-                                        <svg className="w-16 h-16 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                                        </svg>
-                                        <p>Coffee Cup with QR Code</p>
-                                    </div>
                                 </div>
                                 <div className="p-6">
                                     <h3 className="text-2xl font-bold mb-2">Branded Coffee Cups</h3>
