@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-export default function SponsorsPitch() {
+import Link from "next/link";
     const [formData, setFormData] = useState({
         companyName: "",
         contactName: "",
@@ -77,9 +76,9 @@ ${formData.message}
             {/* Header */}
             <header className="bg-slate-900 border-b border-slate-700">
                 <div className="max-w-6xl mx-auto px-4 py-6">
-                    <a href="/" className="text-3xl font-bold hover:opacity-80 transition-opacity" style={{ fontFamily: "'Ostrich Sans Heavy', sans-serif" }}>
+                    <Link href="/" className="text-3xl font-bold hover:opacity-80 transition-opacity inline-block" style={{ fontFamily: "'Ostrich Sans Heavy', sans-serif" }}>
                         Rolling Slow <span style={{ color: '#e35e9f' }}>MEDIA</span>
-                    </a>
+                    </Link>
                 </div>
             </header>
 
@@ -326,12 +325,12 @@ ${formData.message}
 
                     {/* CTA Back to Sponsors */}
                     <div className="text-center">
-                        <a
+                        <Link
                             href="/#sponsors"
                             className="inline-block px-8 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg font-semibold transition-colors"
                         >
                             Back to Sponsors
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </section>
