@@ -39,7 +39,7 @@ export default function Hero() {
                 </h1>
 
                 <p className="text-xl md:text-2xl text-gray-300 mb-4">
-                    Car review, coffee meets, and driving tours
+                    Car reviews, coffee meets and driving tours
                 </p>
 
                 {/* Social / platform icons (links) */}
