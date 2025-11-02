@@ -28,6 +28,9 @@ export default function NextEvent() {
 
                 <div className="grid md:grid-cols-2 gap-8 items-center">
                     <div className="bg-gradient-to-br from-red-900/30 to-orange-900/30 p-8 rounded-lg border border-red-500/30">
+                        <p className="text-red-400 text-sm font-semibold mb-2">
+                            Porsche Drive Group and Rolling Slow Media presents:
+                        </p>
                         <h3 className="text-3xl font-bold mb-6 text-red-400">
                             {upcomingEvent.title}
                         </h3>
