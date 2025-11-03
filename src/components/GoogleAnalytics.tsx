@@ -33,9 +33,11 @@ export default function GoogleAnalytics() {
     const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
     
     if (!measurementId) {
-      console.log('Google Analytics ID not found');
+      console.log('Google Analytics ID not found - make sure NEXT_PUBLIC_GA_MEASUREMENT_ID is set in environment variables');
       return;
     }
+
+    console.log('Loading Google Analytics with ID:', measurementId);
 
     // Load Google Analytics script
     const script = document.createElement('script');
@@ -56,6 +58,8 @@ export default function GoogleAnalytics() {
       page_title: 'Rolling Slow Media',
       page_location: window.location.href,
     });
+
+    console.log('Google Analytics initialized successfully');
 
   }, []);
 
