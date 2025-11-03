@@ -105,12 +105,16 @@ export default function NextEvent() {
                         </a>
                     </div>
 
-                    <div className="bg-slate-700 rounded-lg h-96 flex items-center justify-center border border-slate-600">
-                        <img 
-                            src="/images/PSMC-LOGO-transparanat.png" 
-                            alt="PSMC Logo" 
-                            className="w-full h-full object-contain p-8"
-                        />
+                    <div className="bg-slate-700 rounded-lg h-96 flex items-center justify-center border border-slate-600 overflow-hidden">
+                        <video
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            className="w-full h-full object-cover"
+                        >
+                            <source src="/video/PSMC-landscape(1).mp4" type="video/mp4" />
+                        </video>
                     </div>
                 </div>
             </div>
