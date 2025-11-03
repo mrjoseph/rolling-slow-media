@@ -1,6 +1,25 @@
 "use client";
 
+import { trackEvent } from "@/components/GoogleAnalytics";
+
 export default function Hero() {
+    const handleSocialClick = (platform: string, url: string) => {
+        trackEvent('social_media_click', {
+            platform: platform,
+            url: url,
+            event_category: 'engagement',
+            event_label: platform,
+        });
+    };
+
+    const handleCTAClick = (buttonName: string, url: string) => {
+        trackEvent('cta_click', {
+            button_name: buttonName,
+            url: url,
+            event_category: 'engagement',
+            event_label: buttonName,
+        });
+    };
     return (
         <section className="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden bg-slate-900">
             {/* Background Video - Desktop */}
@@ -44,10 +63,24 @@ export default function Hero() {
 
                 {/* Social / platform icons (links) */}
                 <div className="flex items-center justify-center gap-4 mb-6">
-                    <a href="https://www.youtube.com/@RollingSlowMedia/videos" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="w-10 h-10 bg-red-600 hover:bg-red-700 rounded-lg flex items-center justify-center transition-colors">
+                    <a 
+                        href="https://www.youtube.com/@RollingSlowMedia/videos" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        aria-label="YouTube" 
+                        onClick={() => handleSocialClick('YouTube', 'https://www.youtube.com/@RollingSlowMedia/videos')}
+                        className="w-10 h-10 bg-red-600 hover:bg-red-700 rounded-lg flex items-center justify-center transition-colors"
+                    >
                         <img src="/icons/youtube.svg" alt="YouTube" className="w-5 h-5" />
                     </a>
-                    <a href="https://www.instagram.com/rollingslowmedia/#" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 bg-pink-600 hover:bg-pink-700 rounded-lg flex items-center justify-center transition-colors">
+                    <a 
+                        href="https://www.instagram.com/rollingslowmedia/#" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        aria-label="Instagram" 
+                        onClick={() => handleSocialClick('Instagram', 'https://www.instagram.com/rollingslowmedia/#')}
+                        className="w-10 h-10 bg-pink-600 hover:bg-pink-700 rounded-lg flex items-center justify-center transition-colors"
+                    >
                         <img src="/icons/instagram.svg" alt="Instagram" className="w-5 h-5" />
                     </a>
                     <a href="https://www.tiktok.com/@rollinslowmedia" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="w-10 h-10 bg-black hover:bg-gray-800 rounded-lg flex items-center justify-center transition-colors">
@@ -76,6 +109,7 @@ export default function Hero() {
                         href="https://www.youtube.com/@RollingSlowMedia/videos"
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => handleCTAClick('Subscribe YouTube', 'https://www.youtube.com/@RollingSlowMedia/videos')}
                         className="px-8 py-3 bg-red-600 hover:bg-red-700 rounded-lg font-semibold transition-colors flex items-center gap-2"
                     >
                         Subscribe on YouTube
@@ -83,6 +117,7 @@ export default function Hero() {
                     </a>
                     <a
                         href="#next-event"
+                        onClick={() => handleCTAClick('Next Event', '#next-event')}
                         className="px-8 py-3 rounded-lg font-semibold transition-colors hover:opacity-90 flex items-center gap-2"
                         style={{ backgroundColor: '#e35e9f' }}
                     >
@@ -93,6 +128,7 @@ export default function Hero() {
                     </a>
                     <a
                         href="#contact"
+                        onClick={() => handleCTAClick('Get in Touch', '#contact')}
                         className="px-8 py-3 border border-gray-400 hover:border-white hover:text-white rounded-lg font-semibold transition-colors flex items-center gap-2"
                     >
                         Get in Touch

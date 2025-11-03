@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackEvent } from "@/components/GoogleAnalytics";
 
 export default function ContactUs() {
     const [formData, setFormData] = useState({
@@ -48,6 +49,13 @@ export default function ContactUs() {
 
             setSubmitted(true);
             setFormData({ name: "", email: "", subject: "", message: "" });
+
+            // Track contact form submission
+            trackEvent('contact_form_submission', {
+                subject: formData.subject,
+                event_category: 'engagement',
+                event_label: 'Contact Form',
+            });
 
             // Reset the success message after 5 seconds
             setTimeout(() => {

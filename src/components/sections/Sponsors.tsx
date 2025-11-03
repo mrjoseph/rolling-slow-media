@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { trackSponsorClick } from "@/components/GoogleAnalytics";
 
 export default function Sponsors() {
+  // Example sponsors - uncomment and modify when you have real sponsors
   // const sponsors = [
   //   {
   //     name: "Vectra",
@@ -11,50 +13,21 @@ export default function Sponsors() {
   //     link: "https://vectra.ai",
   //     description: "AI-powered threat detection and response platform",
   //   },
-  //       {
+  //   {
   //     name: "BBS Wheels",
   //     logo: "/logos/bbs.png",
   //     link: "https://bbs.com",
   //     description: "High-performance wheels and accessories",
   //   },
-  //   {
-  //     name: "Vectra Dark",
-  //     logo: "/logos/vectra-dark.png",
-  //     link: "https://vectra.ai",
-  //     description: "Enterprise security solutions",
-  //   },
-  //   {
-  //     name: "Prelude",
-  //     logo: "/logos/prelude.png",
-  //     link: "https://prelude.org",
-  //     description: "Adversary emulation and red team operations",
-  //   },
-  //   {
-  //     name: "Dexign",
-  //     logo: "/logos/dexign.png",
-  //     link: "https://dexign.com",
-  //     description: "Creative design and branding services",
-  //   },
-  //   {
-  //     name: "Emblem",
-  //     logo: "/logos/emblem.png",
-  //     link: "https://emblem.io",
-  //     description: "Visual identity and brand strategy",
-  //   },
-  //   {
-  //     name: "Grapho Dark",
-  //     logo: "/logos/grapho-dark.png",
-  //     link: "https://grapho.com",
-  //     description: "Modern design framework and tools",
-  //   },
-  //   {
-  //     name: "Wayline",
-  //     logo: "/logos/wayline-logomark.png",
-  //     link: "https://wayline.io",
-  //     description: "Digital navigation and mapping solutions",
-  //   },
+  //   // Add more sponsors here...
   // ];
+  
   const sponsors = [];
+
+  const handleSponsorClick = (sponsor: any) => {
+    // Track sponsor click for analytics
+    trackSponsorClick(sponsor.name, sponsor.link);
+  };
 
   return (
     <section id="sponsors" className="py-20 px-4 bg-white">
@@ -90,6 +63,7 @@ export default function Sponsors() {
               href={sponsor.link}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => handleSponsorClick(sponsor)}
               className="relative group bg-white overflow-hidden aspect-square flex items-center justify-center cursor-pointer"
             >
               {/* Logo */}
