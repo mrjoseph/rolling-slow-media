@@ -105,7 +105,7 @@ export default function NextEvent() {
                         </a>
                     </div>
 
-                    <div className="bg-slate-700 rounded-lg h-96 flex items-center justify-center border border-slate-600 overflow-hidden">
+                    <div className="bg-slate-700 rounded-lg aspect-video flex items-center justify-center border border-slate-600 overflow-hidden">
                         <video
                             autoPlay
                             muted
