@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Analytics Dashboard | Rolling Slow Media',
@@ -103,12 +104,12 @@ export default function AnalyticsDashboard() {
         </div>
 
         <div className="mt-8 text-center">
-          <a
+          <Link
             href="/"
-            className="px-8 py-3 bg-red-600 hover:bg-red-700 rounded-lg font-semibold transition-colors"
+            className="px-8 py-3 bg-red-600 hover:bg-red-700 rounded-lg font-semibold transition-colors inline-block"
           >
             Back to Website
-          </a>
+          </Link>
         </div>
       </div>
     </div>
