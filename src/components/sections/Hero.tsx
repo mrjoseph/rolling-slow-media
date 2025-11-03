@@ -39,7 +39,7 @@ export default function Hero() {
                 </h1>
 
                 <p className="text-xl md:text-2xl text-gray-300 mb-4">
-                    Car reviews, coffee meets and driving tours
+                    Cars & Coffee meets featuring Porsches, supercars and modern classics
                 </p>
 
                 {/* Social / platform icons (links) */}
@@ -68,7 +68,7 @@ export default function Hero() {
                 </div>
 
                 <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
-                    Documenting car culture since 2023. Raw stories, epic events, and the passion behind every engine.
+                    Documenting car culture since 2023. Join our cars and coffee events featuring Porsches, supercars, and modern classics. Raw stories, epic events, and the passion behind every engine.
                 </p>
 
                 <div className="flex gap-4 justify-center flex-wrap">

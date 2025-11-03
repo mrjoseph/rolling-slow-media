@@ -19,16 +19,16 @@ export default function About() {
                     <div className="space-y-6">
                         <p className="text-lg text-gray-300 leading-relaxed">
                             Rolling Slow Media is dedicated to bringing you the most authentic
-                            and engaging automotive content on YouTube. From exclusive car
-                            reviews to live event coverage, we showcase the culture, passion,
-                            and stories behind some of the most incredible vehicles.
+                            and engaging automotive content on YouTube. From exclusive Porsche reviews 
+                            to cars and coffee event coverage, we showcase supercars, modern classics, 
+                            and the culture behind these incredible vehicles.
                         </p>
 
                         <p className="text-lg text-gray-300 leading-relaxed">
-                            Our mission is to connect car enthusiasts worldwide, celebrate
-                            automotive artistry, and provide in-depth insights into the world
-                            of high-performance and rare vehicles. We believe every car has a
-                            story to tell.
+                            Our mission is to connect car enthusiasts worldwide through premium 
+                            cars and coffee meets, celebrate automotive artistry, and provide 
+                            in-depth insights into Porsches, supercars, and classic cars. 
+                            We believe every car has a story to tell.
                         </p>
 
                         <div className="grid grid-cols-2 gap-4 my-8 max-w-md mx-auto">

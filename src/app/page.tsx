@@ -9,12 +9,12 @@ import ContactUs from "@/components/sections/ContactUs";
 
 export default function Home() {
   return (
-    <div className="bg-gradient-to-b from-slate-900 to-slate-800 text-white">
+    <main className="bg-gradient-to-b from-slate-900 to-slate-800 text-white">
       <Hero />
       <NextEvent />
       <About />
       <Sponsors />
       <ContactUs />
-    </div>
+    </main>
   );
 }
