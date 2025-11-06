@@ -61,7 +61,56 @@ export default function Hero() {
                     Cars & Coffee meets featuring Porsches, supercars and modern classics
                 </p>
 
-                {/* Social / platform icons (links) */}
+                <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
+                    Documenting car culture since 2023. Join our cars and coffee events featuring Porsches, supercars, and modern classics. Raw stories, epic events, and the passion behind every engine.
+                </p>
+
+                {/* Regent's Park Event Promotion */}
+                <div className="mb-8">
+                    <a 
+                        href="#next-event"
+                        onClick={() => handleCTAClick('PSMC Event Hero', '#next-event')}
+                        className="inline-block bg-slate-800/50 border border-gray-600 hover:border-white rounded-lg p-4 transition-all duration-300 hover:bg-slate-700/50 group"
+                    >
+                        <div className="flex items-center justify-center mb-1">
+                            <img 
+                                src="/images/PSMC-LOGO-transparanat.png" 
+                                alt="Porsches, Supercars & Modern Classics" 
+                                className="h-[14rem] w-auto object-contain"
+                            />
+                        </div>
+                        
+                        <p className="text-lg font-semibold text-gray-300 group-hover:text-white transition-colors uppercase tracking-wide">
+                            <span className="font-bold text-white">NEXT EVENT:</span> DECEMBER 14TH, 8AM-12PM<br />
+                            REGENT'S PARK BAR & KITCHEN, NW1 4NU
+                        </p>
+                    </a>
+                </div>
+
+                <div className="flex gap-4 justify-center flex-wrap mb-6">
+                    <a
+                        href="https://www.youtube.com/@RollingSlowMedia/videos"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => handleCTAClick('Subscribe YouTube', 'https://www.youtube.com/@RollingSlowMedia/videos')}
+                        className="px-8 py-3 bg-red-600 hover:bg-red-700 rounded-lg font-semibold transition-colors flex items-center gap-2"
+                    >
+                        Subscribe on YouTube
+                        <img src="/icons/youtube.svg" alt="" className="w-5 h-5" />
+                    </a>
+                    <a
+                        href="#contact"
+                        onClick={() => handleCTAClick('Get in Touch', '#contact')}
+                        className="px-8 py-3 border border-gray-400 hover:border-white hover:text-white rounded-lg font-semibold transition-colors flex items-center gap-2"
+                    >
+                        Get in Touch
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </a>
+                </div>
+
+                {/* Social Media Icons */}
                 <div className="flex items-center justify-center gap-4 mb-6">
                     <a 
                         href="https://www.youtube.com/@RollingSlowMedia/videos" 
@@ -83,58 +132,53 @@ export default function Hero() {
                     >
                         <img src="/icons/instagram.svg" alt="Instagram" className="w-5 h-5" />
                     </a>
-                    <a href="https://www.tiktok.com/@rollinslowmedia" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="w-10 h-10 bg-black hover:bg-gray-800 rounded-lg flex items-center justify-center transition-colors">
+                    <a 
+                        href="https://www.tiktok.com/@rollinslowmedia" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        aria-label="TikTok" 
+                        onClick={() => handleSocialClick('TikTok', 'https://www.tiktok.com/@rollinslowmedia')}
+                        className="w-10 h-10 bg-black hover:bg-gray-800 rounded-lg flex items-center justify-center transition-colors"
+                    >
                         <img src="/icons/tiktok.svg" alt="TikTok" className="w-5 h-5" />
                     </a>
-                    <a href="https://www.facebook.com/share/17YWQRa8Dd/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-10 h-10 bg-blue-600 hover:bg-blue-700 rounded-lg flex items-center justify-center transition-colors">
+                    <a 
+                        href="https://www.facebook.com/share/17YWQRa8Dd/?mibextid=wwXIfr" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        aria-label="Facebook" 
+                        onClick={() => handleSocialClick('Facebook', 'https://www.facebook.com/share/17YWQRa8Dd/?mibextid=wwXIfr')}
+                        className="w-10 h-10 bg-blue-600 hover:bg-blue-700 rounded-lg flex items-center justify-center transition-colors"
+                    >
                         <img src="/icons/facebook.svg" alt="Facebook" className="w-5 h-5" />
                     </a>
-                    <a href="https://wa.me/07841465186" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="w-10 h-10 bg-green-600 hover:bg-green-700 rounded-lg flex items-center justify-center transition-colors">
+                    <a 
+                        href="https://wa.me/07841465186" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        aria-label="WhatsApp" 
+                        onClick={() => handleSocialClick('WhatsApp', 'https://wa.me/07841465186')}
+                        className="w-10 h-10 bg-green-600 hover:bg-green-700 rounded-lg flex items-center justify-center transition-colors"
+                    >
                         <img src="/icons/whatsapp.svg" alt="WhatsApp" className="w-5 h-5" />
                     </a>
-                    <a href="#contact" aria-label="Email" className="w-10 h-10 bg-gray-600 hover:bg-gray-700 rounded-lg flex items-center justify-center transition-colors">
+                    <a 
+                        href="#contact" 
+                        aria-label="Email" 
+                        onClick={() => handleSocialClick('Email', '#contact')}
+                        className="w-10 h-10 bg-gray-600 hover:bg-gray-700 rounded-lg flex items-center justify-center transition-colors"
+                    >
                         <img src="/icons/email.svg" alt="Email" className="w-5 h-5" />
                     </a>
-                    <a href="https://www.eventbrite.co.uk/e/porsches-supercars-modern-classics-regents-park-cars-coffee-tickets-1833380152389?aff=oddtdtcreator" target="_blank" rel="noopener noreferrer" aria-label="Eventbrite" className="w-10 h-10 bg-orange-600 hover:bg-orange-700 rounded-lg flex items-center justify-center transition-colors">
+                    <a 
+                        href="https://www.eventbrite.co.uk/e/porsches-supercars-modern-classics-regents-park-cars-coffee-tickets-1833380152389?aff=oddtdtcreator" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        aria-label="Eventbrite" 
+                        onClick={() => handleSocialClick('Eventbrite', 'https://www.eventbrite.co.uk/e/porsches-supercars-modern-classics-regents-park-cars-coffee-tickets-1833380152389?aff=oddtdtcreator')}
+                        className="w-10 h-10 bg-orange-600 hover:bg-orange-700 rounded-lg flex items-center justify-center transition-colors"
+                    >
                         <img src="/icons/eventbrite.svg" alt="Eventbrite" className="w-5 h-5" />
-                    </a>
-                </div>
-
-                <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
-                    Documenting car culture since 2023. Join our cars and coffee events featuring Porsches, supercars, and modern classics. Raw stories, epic events, and the passion behind every engine.
-                </p>
-
-                <div className="flex gap-4 justify-center flex-wrap">
-                    <a
-                        href="https://www.youtube.com/@RollingSlowMedia/videos"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => handleCTAClick('Subscribe YouTube', 'https://www.youtube.com/@RollingSlowMedia/videos')}
-                        className="px-8 py-3 bg-red-600 hover:bg-red-700 rounded-lg font-semibold transition-colors flex items-center gap-2"
-                    >
-                        Subscribe on YouTube
-                        <img src="/icons/youtube.svg" alt="" className="w-5 h-5" />
-                    </a>
-                    <a
-                        href="#next-event"
-                        onClick={() => handleCTAClick('Next Event', '#next-event')}
-                        className="px-8 py-3 rounded-lg font-semibold transition-colors hover:opacity-90 flex items-center gap-2"
-                        style={{ backgroundColor: '#e35e9f' }}
-                    >
-                        Next Event
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                    </a>
-                    <a
-                        href="#contact"
-                        onClick={() => handleCTAClick('Get in Touch', '#contact')}
-                        className="px-8 py-3 border border-gray-400 hover:border-white hover:text-white rounded-lg font-semibold transition-colors flex items-center gap-2"
-                    >
-                        Get in Touch
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
                     </a>
                 </div>
 

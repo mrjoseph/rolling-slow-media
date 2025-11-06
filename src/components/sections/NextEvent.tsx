@@ -5,7 +5,7 @@ export default function NextEvent() {
         title: "Porsches, Supercars & Modern Classics Cars & Coffee",
         date: "Sunday 14th December 2025",
         time: "8:00 AM – 12:00 PM",
-        location: "Regent's Park Bar & Kitchen, Inner Circle, London",
+        location: "Regent's Park Bar & Kitchen, Inner Circle, London, NW1 4NU",
         description:
             "Start your Sunday with the sound of engines, coffee, and conversation. Join us in the beautiful setting of Regent's Park Inner Circle for an end-of-year Cars & Coffee gathering celebrating Porsches, supercars, and modern classics. Enjoy a free coffee and mince pie at the Regent's Park Bar & Kitchen when you show your Eventbrite ticket. Spaces are limited to 100 cars, so reserve your free ticket early.",
         capacity: "100 cars",

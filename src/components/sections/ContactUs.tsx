@@ -9,11 +9,13 @@ export default function ContactUs() {
         email: "",
         subject: "",
         message: "",
+        honeypot: "", // Hidden field for spam detection
     });
 
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
     const [submitted, setSubmitted] = useState(false);
+    const [formStartTime] = useState(Date.now()); // Track when form was loaded
 
     const handleChange = (
         e: React.ChangeEvent<
@@ -32,13 +34,56 @@ export default function ContactUs() {
         setIsLoading(true);
         setError("");
 
+        // Basic spam protection checks
         try {
+            // Check honeypot field (should be empty)
+            if (formData.honeypot) {
+                setError("Spam detected. Please try again.");
+                setIsLoading(false);
+                return;
+            }
+
+            // Check form submission time (should take at least 3 seconds)
+            const timeTaken = Date.now() - formStartTime;
+            if (timeTaken < 3000) {
+                setError("Please take your time filling out the form.");
+                setIsLoading(false);
+                return;
+            }
+
+            // Basic content validation
+            const suspiciousPatterns = [
+                /(.)\1{10,}/, // Repeated characters
+                /[A-Z]{20,}/, // Too many consecutive capitals
+                /https?:\/\/[^\s]+/gi, // URLs in message (multiple)
+            ];
+
+            const textToCheck = `${formData.name} ${formData.message} ${formData.subject}`;
+            const urlMatches = textToCheck.match(/https?:\/\/[^\s]+/gi);
+            
+            if (urlMatches && urlMatches.length > 1) {
+                setError("Multiple links detected. Please remove unnecessary links.");
+                setIsLoading(false);
+                return;
+            }
+
+            for (const pattern of suspiciousPatterns.slice(0, 2)) { // Skip URL check as we handled it above
+                if (pattern.test(textToCheck)) {
+                    setError("Suspicious content detected. Please check your submission.");
+                    setIsLoading(false);
+                    return;
+                }
+            }
+
             const response = await fetch("/api/contact", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({
+                    ...formData,
+                    formStartTime, // Send form start time for additional server-side checks
+                }),
             });
 
             const data = await response.json();
@@ -48,7 +93,13 @@ export default function ContactUs() {
             }
 
             setSubmitted(true);
-            setFormData({ name: "", email: "", subject: "", message: "" });
+            setFormData({ 
+                name: "", 
+                email: "", 
+                subject: "", 
+                message: "",
+                honeypot: ""
+            });
 
             // Track contact form submission
             trackEvent('contact_form_submission', {
@@ -239,6 +290,22 @@ export default function ContactUs() {
                                     rows={4}
                                     className="w-full px-4 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 transition-colors resize-none"
                                     placeholder="Your message..."
+                                />
+                            </div>
+
+                            {/* Honeypot field - hidden from users but visible to bots */}
+                            <div style={{ position: 'absolute', left: '-9999px', visibility: 'hidden' }}>
+                                <label htmlFor="website">
+                                    Website (leave blank)
+                                </label>
+                                <input
+                                    type="text"
+                                    id="website"
+                                    name="honeypot"
+                                    value={formData.honeypot}
+                                    onChange={handleChange}
+                                    tabIndex={-1}
+                                    autoComplete="off"
                                 />
                             </div>
 
