@@ -34,23 +34,17 @@ export default function SponsorsPitch() {
         setError("");
 
         try {
-            const response = await fetch("/api/contact", {
+            const response = await fetch("/api/sponsor", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    name: formData.contactName,
+                    companyName: formData.companyName,
+                    contactName: formData.contactName,
                     email: formData.email,
-                    subject: `Sponsorship Inquiry from ${formData.companyName}`,
-                    message: `
-Company: ${formData.companyName}
-Contact Name: ${formData.contactName}
-Phone: ${formData.phone}
-
-Message:
-${formData.message}
-                    `,
+                    phone: formData.phone,
+                    message: formData.message,
                 }),
             });
 
