@@ -81,7 +81,7 @@ export default function Hero() {
                         </div>
                         
                         <p className="text-lg font-semibold text-gray-300 group-hover:text-white transition-colors uppercase tracking-wide">
-                            <span className="font-bold text-white">NEXT EVENT:</span> DECEMBER 14TH, 8AM-12PM<br />
+                            <span className="font-bold text-white">NEXT EVENT:</span> JANUARY 11TH, 8AM-12PM<br />
                             REGENT'S PARK BAR & KITCHEN, NW1 4NU
                         </p>
                     </a>

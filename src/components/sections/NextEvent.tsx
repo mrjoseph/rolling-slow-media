@@ -3,14 +3,14 @@
 export default function NextEvent() {
     const upcomingEvent = {
         title: "Porsches, Supercars & Modern Classics Cars & Coffee",
-        date: "Sunday 14th December 2025",
+        date: "Sunday 11th January 2026",
         time: "8:00 AM – 12:00 PM",
-        location: "Regent's Park Bar & Kitchen, Inner Circle, London, NW1 4NU",
+        location: "Regent's Park Bar & Kitchen, Inner Circle, London",
         description:
-            "Start your Sunday with the sound of engines, coffee, and conversation. Join us in the beautiful setting of Regent's Park Inner Circle for an end-of-year Cars & Coffee gathering celebrating Porsches, supercars, and modern classics. Enjoy a free coffee and mince pie at the Regent's Park Bar & Kitchen when you show your Eventbrite ticket. Spaces are limited to 100 cars, so reserve your free ticket early.",
-        capacity: "100 cars",
+            "Start your Sunday with the sound of engines, coffee, and conversation. Join us in the beautiful setting of Regent's Park Inner Circle for our New Year Cars & Coffee gathering, celebrating Porsches, supercars, and modern classics. Spaces are limited to around 150 cars, so reserve your free ticket early.",
+        capacity: "150 cars",
         parking: "Free before 9 AM; pay & display from 9 AM–6:30 PM (50p per 15 mins on Sundays). Gates open 7 AM.",
-        ticketInfo: "Free entry — ticket required for refreshments",
+        ticketInfo: "Free entry — ticket required",
     };
 
     return (
@@ -26,7 +26,7 @@ export default function NextEvent() {
                     Mark your calendar for our upcoming events
                 </p>
 
-                <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div className="grid md:grid-cols-2 gap-8 items-start">
                     <div className="bg-gradient-to-br from-red-900/30 to-orange-900/30 p-8 rounded-lg border border-red-500/30">
                         <p className="text-red-400 text-sm font-semibold mb-2">
                             Porsche Drive Group and Rolling Slow Media presents:
@@ -96,7 +96,7 @@ export default function NextEvent() {
                         <p className="text-gray-300 mb-6">{upcomingEvent.description}</p>
 
                         <a
-                            href="https://www.eventbrite.co.uk/e/porsches-supercars-modern-classics-regents-park-cars-coffee-tickets-1833380152389?aff=oddtdtcreator"
+                            href="https://www.eventbrite.co.uk/e/porsches-supercars-modern-classics-regents-park-cars-coffee-tickets-1978414816975?aff=ebdsoporgprofile"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-block w-full px-6 py-3 bg-red-600 hover:bg-red-700 rounded-lg font-semibold transition-colors text-center"
@@ -105,16 +105,106 @@ export default function NextEvent() {
                         </a>
                     </div>
 
-                    <div className="bg-slate-700 rounded-lg aspect-video flex items-center justify-center border border-slate-600 overflow-hidden">
-                        <video
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                            className="w-full h-full object-cover"
-                        >
-                            <source src="/video/PSMC-landscape(1).mp4" type="video/mp4" />
-                        </video>
+                    {/* Right Column with Video and Additional Info */}
+                    <div className="space-y-6">
+                        <div className="bg-slate-700 rounded-lg aspect-video flex items-center justify-center border border-slate-600 overflow-hidden">
+                            <video
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                                className="w-full h-full object-cover"
+                            >
+                                <source src="/video/PSMC-landscape(1).mp4" type="video/mp4" />
+                            </video>
+                        </div>
+
+                        {/* Special Offer */}
+                        <div className="bg-gradient-to-br from-green-900/30 to-emerald-900/30 p-6 rounded-lg border border-green-500/30">
+                            <h3 className="text-2xl font-bold mb-3 text-green-400" style={{ fontFamily: "'Ostrich Sans Heavy', sans-serif" }}>
+                                Special Offer from Regent's Park Bar & Kitchen
+                            </h3>
+                            <p className="text-gray-300 mb-3">
+                                To make the morning even better, the café is offering all attendees:
+                            </p>
+                            <ul className="text-gray-300 space-y-2 mb-3 list-disc list-inside">
+                                <li>£1 coffee with any cake</li>
+                                <li>£1 coffee with any breakfast item</li>
+                            </ul>
+                            <p className="text-sm text-gray-400 italic">
+                                This offer is exclusive to our Cars & Coffee event and available throughout the morning. Please show your ticket to staff.
+                            </p>
+                        </div>
+
+                        {/* About the Event */}
+                        <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-600">
+                            <h3 className="text-2xl font-bold mb-3 text-white" style={{ fontFamily: "'Ostrich Sans Heavy', sans-serif" }}>
+                                About the Event
+                            </h3>
+                            <p className="text-gray-300">
+                                This meet brings together like-minded enthusiasts in one of London's most iconic parks. Expect an eclectic mix of machinery, relaxed conversation, great photo opportunities, and a welcoming community of drivers.
+                            </p>
+                            <p className="text-gray-300 mt-3">
+                                Whether you bring a Porsche, a supercar, a modern classic, or you simply want to enjoy the atmosphere, this is the perfect way to start your Sunday.
+                            </p>
+                        </div>
+
+                        {/* Parking Information */}
+                        <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-600">
+                            <h3 className="text-2xl font-bold mb-3 text-white" style={{ fontFamily: "'Ostrich Sans Heavy', sans-serif" }}>
+                                Parking Information
+                            </h3>
+                            <ul className="text-gray-300 space-y-2 list-disc list-inside">
+                                <li>Free before 9 AM</li>
+                                <li>Pay & Display from 9 AM–6:30 PM (50p per 15 minutes on Sundays)</li>
+                                <li>Gates open at 7 AM</li>
+                                <li>Please follow parking guidance from event volunteers to help keep everything flowing smoothly</li>
+                            </ul>
+                        </div>
+
+                        {/* Important Information */}
+                        <div className="bg-gradient-to-br from-yellow-900/30 to-orange-900/30 p-6 rounded-lg border border-yellow-500/30">
+                            <h3 className="text-2xl font-bold mb-4 text-yellow-400" style={{ fontFamily: "'Ostrich Sans Heavy', sans-serif" }}>
+                                Important Information
+                            </h3>
+                            
+                            <div className="mb-4">
+                                <h4 className="text-xl font-semibold mb-2 text-yellow-300">Vehicle Disclaimer</h4>
+                                <p className="text-gray-300 text-sm">
+                                    All vehicles are parked at the owner's own risk. The organisers, venue, and host partners accept no responsibility for damage, loss, theft, or incidents involving any vehicle or personal property during the event.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h4 className="text-xl font-semibold mb-2 text-yellow-300">Code of Conduct</h4>
+                                <p className="text-gray-300 mb-2">
+                                    To keep this meet safe, enjoyable, and respectful for everyone in the park:
+                                </p>
+                                <ul className="text-gray-300 space-y-1 list-disc list-inside text-sm">
+                                    <li>No revving, loud acceleration, or reckless driving</li>
+                                    <li>No drifting, burnouts, or antisocial behaviour</li>
+                                    <li>Respect pedestrians, cyclists, and other park users</li>
+                                    <li>Follow instructions from park staff or event volunteers</li>
+                                    <li>Keep noise to a minimum when arriving and leaving</li>
+                                    <li>Park considerately and give others space</li>
+                                    <li>Take all rubbish with you</li>
+                                </ul>
+                                <p className="text-gray-300 mt-2 text-sm font-semibold">
+                                    Anyone ignoring these rules may be asked to leave.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Hosted By */}
+                        <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-600 text-center">
+                            <h3 className="text-2xl font-bold mb-3 text-white" style={{ fontFamily: "'Ostrich Sans Heavy', sans-serif" }}>
+                                Hosted By
+                            </h3>
+                            <p className="text-gray-300 text-lg">
+                                Porsche Drive Group<br />
+                                Rolling Slow Media
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
