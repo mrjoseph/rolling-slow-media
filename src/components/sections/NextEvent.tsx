@@ -155,7 +155,7 @@ export default function NextEvent() {
                         <p className="text-gray-300 mb-6">{upcomingEvent.description}</p>
 
                         <a
-                            href="https://www.eventbrite.co.uk/e/porsches-supercars-modern-classics-regents-park-cars-coffee-tickets-1978414816975?aff=ebdsoporgprofile"
+                            href="https://www.eventbrite.co.uk/e/porsches-supercars-modern-classics-regents-park-cars-coffee-tickets-1980365403231?utm-campaign=social&utm-content=attendeeshare&utm-medium=discovery&utm-term=listing&utm-source=cp&aff=ebdsshcopyurl"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-block w-full px-6 py-3 bg-red-600 hover:bg-red-700 rounded-lg font-semibold transition-colors text-center"

@@ -219,11 +219,11 @@ export default function Hero() {
                         <img src="/icons/email.svg" alt="Email" className="w-5 h-5" />
                     </a>
                     <a 
-                        href="https://www.eventbrite.co.uk/e/porsches-supercars-modern-classics-regents-park-cars-coffee-tickets-1833380152389?aff=oddtdtcreator" 
+                        href="https://www.eventbrite.co.uk/e/porsches-supercars-modern-classics-regents-park-cars-coffee-tickets-1980365403231?utm-campaign=social&utm-content=attendeeshare&utm-medium=discovery&utm-term=listing&utm-source=cp&aff=ebdsshcopyurl" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         aria-label="Eventbrite" 
-                        onClick={() => handleSocialClick('Eventbrite', 'https://www.eventbrite.co.uk/e/porsches-supercars-modern-classics-regents-park-cars-coffee-tickets-1833380152389?aff=oddtdtcreator')}
+                        onClick={() => handleSocialClick('Eventbrite', 'https://www.eventbrite.co.uk/e/porsches-supercars-modern-classics-regents-park-cars-coffee-tickets-1980365403231?utm-campaign=social&utm-content=attendeeshare&utm-medium=discovery&utm-term=listing&utm-source=cp&aff=ebdsshcopyurl')}
                         className="w-10 h-10 bg-orange-600 hover:bg-orange-700 rounded-lg flex items-center justify-center transition-colors"
                     >
                         <img src="/icons/eventbrite.svg" alt="Eventbrite" className="w-5 h-5" />
