@@ -2,6 +2,54 @@
 
 import { trackEvent } from "@/components/GoogleAnalytics";
 
+// Function to get the 2nd Sunday of a given month/year
+function getSecondSunday(year: number, month: number): Date {
+    const firstDay = new Date(year, month, 1);
+    const firstDayOfWeek = firstDay.getDay();
+    
+    const daysUntilFirstSunday = firstDayOfWeek === 0 ? 0 : 7 - firstDayOfWeek;
+    const secondSundayDate = 1 + daysUntilFirstSunday + 7;
+    
+    return new Date(year, month, secondSundayDate);
+}
+
+// Function to get ordinal suffix (1st, 2nd, 3rd, etc.)
+function getOrdinalSuffix(day: number): string {
+    if (day > 3 && day < 21) return 'TH';
+    switch (day % 10) {
+        case 1: return 'ST';
+        case 2: return 'ND';
+        case 3: return 'RD';
+        default: return 'TH';
+    }
+}
+
+// Function to format the date for Hero display (e.g., "JANUARY 11TH")
+function formatHeroEventDate(): string {
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    const currentMonth = now.getMonth();
+    
+    let eventDate = getSecondSunday(currentYear, currentMonth);
+    
+    if (eventDate < now) {
+        const nextMonth = currentMonth === 11 ? 0 : currentMonth + 1;
+        const nextYear = currentMonth === 11 ? currentYear + 1 : currentYear;
+        eventDate = getSecondSunday(nextYear, nextMonth);
+    }
+    
+    const months = [
+        'JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE',
+        'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'
+    ];
+    
+    const day = eventDate.getDate();
+    const month = months[eventDate.getMonth()];
+    const ordinal = getOrdinalSuffix(day);
+    
+    return `${month} ${day}${ordinal}`;
+}
+
 export default function Hero() {
     const handleSocialClick = (platform: string, url: string) => {
         trackEvent('social_media_click', {
@@ -70,7 +118,7 @@ export default function Hero() {
                     <a 
                         href="#next-event"
                         onClick={() => handleCTAClick('PSMC Event Hero', '#next-event')}
-                        className="inline-block bg-slate-800/50 border border-gray-600 hover:border-white rounded-lg p-4 transition-all duration-300 hover:bg-slate-700/50 group"
+                        className="inline-block p-4 transition-all duration-300 hover:bg-slate-700/50 group"
                     >
                         <div className="flex items-center justify-center mb-1">
                             <img 
@@ -81,7 +129,7 @@ export default function Hero() {
                         </div>
                         
                         <p className="text-lg font-semibold text-gray-300 group-hover:text-white transition-colors uppercase tracking-wide">
-                            <span className="font-bold text-white">NEXT EVENT:</span> JANUARY 11TH, 8AM-12PM<br />
+                            <span className="font-bold text-white">NEXT EVENT:</span> {formatHeroEventDate()}, 8AM-12PM<br />
                             REGENT'S PARK BAR & KITCHEN, NW1 4NU
                         </p>
                     </a>
