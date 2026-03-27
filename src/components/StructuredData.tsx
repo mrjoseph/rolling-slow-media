@@ -1,6 +1,8 @@
-"use client";
+import { getNextEventDateInfo } from "@/lib/eventDate";
 
 export default function StructuredData() {
+  const eventInfo = getNextEventDateInfo();
+
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -42,8 +44,8 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "Event",
     "name": "Porsches, Supercars & Modern Classics - Regent's Park Cars & Coffee",
-    "startDate": "2025-12-14T08:00:00+00:00",
-    "endDate": "2025-12-14T12:00:00+00:00",
+    "startDate": eventInfo.startIso,
+    "endDate": eventInfo.endIso,
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "location": {

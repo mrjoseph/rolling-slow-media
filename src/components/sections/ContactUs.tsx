@@ -120,7 +120,7 @@ export default function ContactUs() {
     };
 
     return (
-        <section id="contact" className="py-20 px-4 relative overflow-hidden bg-slate-900" style={{ backgroundImage: 'url(/images/background2.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
+        <section id="contact" className="py-20 px-4 relative overflow-hidden bg-slate-900 bg-scroll md:bg-fixed" style={{ backgroundImage: 'url(/images/background2.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
             {/* Dark overlay */}
             <div className="absolute inset-0 bg-slate-900/75"></div>
             
@@ -227,6 +227,7 @@ export default function ContactUs() {
                                     value={formData.name}
                                     onChange={handleChange}
                                     required
+                                    autoComplete="name"
                                     className="w-full px-4 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 transition-colors"
                                     placeholder="Your name"
                                 />
@@ -246,6 +247,7 @@ export default function ContactUs() {
                                     value={formData.email}
                                     onChange={handleChange}
                                     required
+                                    autoComplete="email"
                                     className="w-full px-4 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 transition-colors"
                                     placeholder="your@email.com"
                                 />
@@ -264,6 +266,7 @@ export default function ContactUs() {
                                     value={formData.subject}
                                     onChange={handleChange}
                                     required
+                                    autoComplete="off"
                                     className="w-full px-4 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white focus:outline-none focus:border-red-500 transition-colors"
                                 >
                                     <option value="">Select a subject</option>
@@ -287,6 +290,7 @@ export default function ContactUs() {
                                     value={formData.message}
                                     onChange={handleChange}
                                     required
+                                    autoComplete="off"
                                     rows={4}
                                     className="w-full px-4 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-red-500 transition-colors resize-none"
                                     placeholder="Your message..."
@@ -294,7 +298,7 @@ export default function ContactUs() {
                             </div>
 
                             {/* Honeypot field - hidden from users but visible to bots */}
-                            <div style={{ position: 'absolute', left: '-9999px', visibility: 'hidden' }}>
+                            <div style={{ position: 'absolute', left: '-9999px', visibility: 'hidden' }} aria-hidden="true">
                                 <label htmlFor="website">
                                     Website (leave blank)
                                 </label>

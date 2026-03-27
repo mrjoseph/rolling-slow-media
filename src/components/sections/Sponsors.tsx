@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
 import { trackSponsorClick } from "@/components/GoogleAnalytics";
 
 export default function Sponsors() {

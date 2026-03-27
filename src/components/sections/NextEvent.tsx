@@ -1,68 +1,13 @@
 "use client";
 
-// Function to get the 2nd Sunday of a given month/year
-function getSecondSunday(year: number, month: number): Date {
-    const firstDay = new Date(year, month, 1);
-    const firstDayOfWeek = firstDay.getDay();
-    
-    // Calculate days until first Sunday (0 = Sunday)
-    const daysUntilFirstSunday = firstDayOfWeek === 0 ? 0 : 7 - firstDayOfWeek;
-    
-    // Second Sunday is 7 days after the first Sunday
-    const secondSundayDate = 1 + daysUntilFirstSunday + 7;
-    
-    return new Date(year, month, secondSundayDate);
-}
-
-// Function to get ordinal suffix (1st, 2nd, 3rd, etc.)
-function getOrdinalSuffix(day: number): string {
-    if (day > 3 && day < 21) return 'th';
-    switch (day % 10) {
-        case 1: return 'st';
-        case 2: return 'nd';
-        case 3: return 'rd';
-        default: return 'th';
-    }
-}
-
-// Function to format the date as "Sunday 11th January 2026"
-function formatEventDate(date: Date): string {
-    const months = [
-        'January', 'February', 'March', 'April', 'May', 'June',
-        'July', 'August', 'September', 'October', 'November', 'December'
-    ];
-    
-    const day = date.getDate();
-    const month = months[date.getMonth()];
-    const year = date.getFullYear();
-    const ordinal = getOrdinalSuffix(day);
-    
-    return `Sunday ${day}${ordinal} ${month} ${year}`;
-}
-
-// Function to get the next event date (2nd Sunday of current or next month)
-function getNextEventDate(): string {
-    const now = new Date();
-    const currentYear = now.getFullYear();
-    const currentMonth = now.getMonth();
-    
-    // Get 2nd Sunday of current month
-    let eventDate = getSecondSunday(currentYear, currentMonth);
-    
-    // If the event has already passed, get next month's 2nd Sunday
-    if (eventDate < now) {
-        const nextMonth = currentMonth === 11 ? 0 : currentMonth + 1;
-        const nextYear = currentMonth === 11 ? currentYear + 1 : currentYear;
-        eventDate = getSecondSunday(nextYear, nextMonth);
-    }
-    
-    return formatEventDate(eventDate);
-}
+import { getNextEventDateInfo } from "@/lib/eventDate";
 
 export default function NextEvent() {
+    const eventInfo = getNextEventDateInfo();
+
     const upcomingEvent = {
         title: "Porsches, Supercars & Modern Classics Cars & Coffee",
-        date: getNextEventDate(),
+        date: eventInfo.displayLong,
         time: "8:00 AM – 12:00 PM",
         location: "Regent's Park Bar & Kitchen, Inner Circle, London",
         description:
@@ -73,7 +18,7 @@ export default function NextEvent() {
     };
 
     return (
-        <section id="next-event" className="py-20 px-4 relative overflow-hidden bg-slate-900" style={{ backgroundImage: 'url(/images/background.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
+        <section id="next-event" className="py-20 px-4 relative overflow-hidden bg-slate-900 bg-scroll md:bg-fixed" style={{ backgroundImage: 'url(/images/background.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
             {/* Dark overlay */}
             <div className="absolute inset-0 bg-slate-900/75"></div>
             
@@ -155,7 +100,7 @@ export default function NextEvent() {
                         <p className="text-gray-300 mb-6">{upcomingEvent.description}</p>
 
                         <a
-                            href="https://www.eventbrite.co.uk/e/porsches-supercars-modern-classics-regents-park-cars-coffee-tickets-1982870972456?aff=oddtdtcreator"
+                            href="https://www.eventbrite.co.uk/e/porsches-supercars-modern-classics-regents-park-cars-coffee-tickets-1982870972456?utm-campaign=social&utm-content=attendeeshare&utm-medium=discovery&utm-term=listing&utm-source=cp&aff=ebdsshcopyurl"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-block w-full px-6 py-3 bg-red-600 hover:bg-red-700 rounded-lg font-semibold transition-colors text-center"

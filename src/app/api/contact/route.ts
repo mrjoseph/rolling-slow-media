@@ -32,6 +32,19 @@ function isRateLimited(ip: string): boolean {
   return false;
 }
 
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function sanitizeSubject(subject: string): string {
+  return subject.replace(/[\r\n]+/g, " ").trim();
+}
+
 export async function POST(request: NextRequest) {
   try {
     const { name, email, subject, message, honeypot, formStartTime } = await request.json();
@@ -99,18 +112,23 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    const safeSubject = sanitizeSubject(subject);
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safeMessage = escapeHtml(message);
+
     const result = await resend.emails.send({
       from: 'Rolling Slow Media <onboarding@resend.dev>',
       to: 'rollinslowsocial@gmail.com',
       replyTo: email,
-      subject: `New Contact Form: ${subject}`,
+      subject: `New Contact Form: ${safeSubject}`,
       html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject}</p>
+        <p><strong>Name:</strong> ${safeName}</p>
+        <p><strong>Email:</strong> ${safeEmail}</p>
+        <p><strong>Subject:</strong> ${escapeHtml(safeSubject)}</p>
         <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
+        <p>${safeMessage.replace(/\n/g, '<br>')}</p>
         <hr>
         <p><small><strong>IP:</strong> ${clientIP}</small></p>
         <p><small><strong>Submitted:</strong> ${new Date().toISOString()}</small></p>

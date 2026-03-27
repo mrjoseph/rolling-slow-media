@@ -7,6 +7,7 @@ interface Video {
   title: string;
   link: string;
   thumbnail: string;
+  fallbackThumbnail: string;
   published: string;
 }
 
@@ -18,47 +19,17 @@ export default function YouTubeVideos() {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const channelId = "UCb_690PpMai--jRRTiNCZWg";
-        const feedUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
-
-        // Use a CORS proxy since YouTube RSS doesn't allow direct CORS requests
-        const response = await fetch(
-          `https://api.allorigins.win/get?url=${encodeURIComponent(feedUrl)}`
-        );
+        const response = await fetch("/api/youtube");
 
         if (!response.ok) throw new Error("Failed to fetch videos");
 
         const data = await response.json();
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(data.contents, "text/xml");
-
-        const entries = xmlDoc.getElementsByTagName("entry");
-        const videoList: Video[] = [];
-
-        for (let i = 0; i < Math.min(entries.length, 6); i++) {
-          const entry = entries[i];
-          const videoId = entry
-            .getElementsByTagName("yt:videoId")[0]
-            ?.textContent;
-          const title = entry.getElementsByTagName("title")[0]?.textContent;
-          const link = entry.getElementsByTagName("link")[0]?.getAttribute("href");
-          const published = entry
-            .getElementsByTagName("published")[0]
-            ?.textContent;
-          const thumbnail = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-
-          if (videoId && title && link) {
-            videoList.push({
-              id: videoId,
-              title,
-              link,
-              thumbnail,
-              published: new Date(published || "").toLocaleDateString(),
-            });
-          }
-        }
-
-        setVideos(videoList);
+        setVideos(
+          (data.videos || []).map((video: Video) => ({
+            ...video,
+            published: new Date(video.published || "").toLocaleDateString(),
+          }))
+        );
       } catch (err) {
         console.error("Error fetching YouTube videos:", err);
         setError("Failed to load videos");
@@ -100,6 +71,12 @@ export default function YouTubeVideos() {
             <img
               src={video.thumbnail}
               alt={video.title}
+              onError={(event) => {
+                const target = event.currentTarget;
+                if (target.src !== video.fallbackThumbnail) {
+                  target.src = video.fallbackThumbnail;
+                }
+              }}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">

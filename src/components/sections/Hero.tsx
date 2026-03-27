@@ -1,56 +1,11 @@
 "use client";
 
 import { trackEvent } from "@/components/GoogleAnalytics";
-
-// Function to get the 2nd Sunday of a given month/year
-function getSecondSunday(year: number, month: number): Date {
-    const firstDay = new Date(year, month, 1);
-    const firstDayOfWeek = firstDay.getDay();
-    
-    const daysUntilFirstSunday = firstDayOfWeek === 0 ? 0 : 7 - firstDayOfWeek;
-    const secondSundayDate = 1 + daysUntilFirstSunday + 7;
-    
-    return new Date(year, month, secondSundayDate);
-}
-
-// Function to get ordinal suffix (1st, 2nd, 3rd, etc.)
-function getOrdinalSuffix(day: number): string {
-    if (day > 3 && day < 21) return 'TH';
-    switch (day % 10) {
-        case 1: return 'ST';
-        case 2: return 'ND';
-        case 3: return 'RD';
-        default: return 'TH';
-    }
-}
-
-// Function to format the date for Hero display (e.g., "JANUARY 11TH")
-function formatHeroEventDate(): string {
-    const now = new Date();
-    const currentYear = now.getFullYear();
-    const currentMonth = now.getMonth();
-    
-    let eventDate = getSecondSunday(currentYear, currentMonth);
-    
-    if (eventDate < now) {
-        const nextMonth = currentMonth === 11 ? 0 : currentMonth + 1;
-        const nextYear = currentMonth === 11 ? currentYear + 1 : currentYear;
-        eventDate = getSecondSunday(nextYear, nextMonth);
-    }
-    
-    const months = [
-        'JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE',
-        'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'
-    ];
-    
-    const day = eventDate.getDate();
-    const month = months[eventDate.getMonth()];
-    const ordinal = getOrdinalSuffix(day);
-    
-    return `${month} ${day}${ordinal}`;
-}
+import { getNextEventDateInfo } from "@/lib/eventDate";
 
 export default function Hero() {
+    const eventInfo = getNextEventDateInfo();
+
     const handleSocialClick = (platform: string, url: string) => {
         trackEvent('social_media_click', {
             platform: platform,
@@ -77,6 +32,8 @@ export default function Hero() {
                     muted
                     loop
                     playsInline
+                    preload="metadata"
+                    poster="/images/background.png"
                     className="w-full h-full object-cover"
                 >
                     <source src="/video/background-video.mp4" type="video/mp4" />
@@ -90,6 +47,8 @@ export default function Hero() {
                     muted
                     loop
                     playsInline
+                    preload="metadata"
+                    poster="/images/background.png"
                     className="w-full h-full object-cover"
                 >
                     <source src="/video/background-portrait.mp4" type="video/mp4" />
@@ -129,7 +88,7 @@ export default function Hero() {
                         </div>
                         
                         <p className="text-lg font-semibold text-gray-300 group-hover:text-white transition-colors uppercase tracking-wide">
-                            <span className="font-bold text-white">NEXT EVENT:</span> {formatHeroEventDate()}, 8AM-12PM<br />
+                            <span className="font-bold text-white">NEXT EVENT:</span> {eventInfo.displayHero}, 8AM-12PM<br />
                             REGENT'S PARK BAR & KITCHEN, NW1 4NU
                         </p>
                     </a>
@@ -219,11 +178,11 @@ export default function Hero() {
                         <img src="/icons/email.svg" alt="Email" className="w-5 h-5" />
                     </a>
                     <a 
-                        href="https://www.eventbrite.co.uk/e/porsches-supercars-modern-classics-regents-park-cars-coffee-tickets-1982870972456?aff=oddtdtcreator" 
+                        href="https://www.eventbrite.co.uk/e/porsches-supercars-modern-classics-regents-park-cars-coffee-tickets-1982870972456?utm-campaign=social&utm-content=attendeeshare&utm-medium=discovery&utm-term=listing&utm-source=cp&aff=ebdsshcopyurl" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         aria-label="Eventbrite" 
-                        onClick={() => handleSocialClick('Eventbrite', 'https://www.eventbrite.co.uk/e/porsches-supercars-modern-classics-regents-park-cars-coffee-tickets-1982870972456?aff=oddtdtcreator')}
+                        onClick={() => handleSocialClick('Eventbrite', 'https://www.eventbrite.co.uk/e/porsches-supercars-modern-classics-regents-park-cars-coffee-tickets-1982870972456?utm-campaign=social&utm-content=attendeeshare&utm-medium=discovery&utm-term=listing&utm-source=cp&aff=ebdsshcopyurl')}
                         className="w-10 h-10 bg-orange-600 hover:bg-orange-700 rounded-lg flex items-center justify-center transition-colors"
                     >
                         <img src="/icons/eventbrite.svg" alt="Eventbrite" className="w-5 h-5" />
