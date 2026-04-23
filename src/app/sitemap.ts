@@ -1,36 +1,33 @@
-import { MetadataRoute } from 'next'
- 
+import { MetadataRoute } from "next";
+import { getAllEvents } from "@/lib/events";
+
 export default function sitemap(): MetadataRoute.Sitemap {
+  const events = getAllEvents();
+
   return [
     {
-      url: 'https://www.rollingslowmedia.com',
+      url: "https://www.rollingslowmedia.com",
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: 'https://www.rollingslowmedia.com#about',
+      url: "https://www.rollingslowmedia.com/events",
       lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: 'https://www.rollingslowmedia.com#next-event',
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: 'https://www.rollingslowmedia.com#contact',
+      url: "https://www.rollingslowmedia.com/sponsors-pitch",
       lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: 'https://www.rollingslowmedia.com#sponsors',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.6,
     },
-  ]
+    ...events.map((event) => ({
+      url: `https://www.rollingslowmedia.com/events/${event.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: event.featured ? 0.95 : 0.8,
+    })),
+  ];
 }
