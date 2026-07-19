@@ -102,7 +102,7 @@ function buildRegentsParkEvent(): EventRecord {
       footnote:
         "This offer is exclusive to our Cars & Coffee event and available throughout the morning. Please show your ticket to staff.",
     },
-    posterImage: "/events/Porsches-supercars-modean-classics-12-july.jpg",
+    posterImage: "/events/august-06-flyer2.jpg",
     posterAlt: "Portrait poster artwork for the Regent's Park Cars & Coffee event",
     mediaVideo: {
       src: "/video/PSMC-landscape(1).mp4",
