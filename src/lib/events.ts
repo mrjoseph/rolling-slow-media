@@ -162,7 +162,7 @@ function buildSundayDriveEvent(): EventRecord {
 }
 
 export function getAllEvents(): EventRecord[] {
-  return [buildRegentsParkEvent(), buildSundayDriveEvent()];
+  return [buildRegentsParkEvent()];
 }
 
 export function getFeaturedEvent(): EventRecord {
