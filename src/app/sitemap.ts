@@ -1,6 +1,8 @@
 import { MetadataRoute } from "next";
 import { getAllEvents } from "@/lib/events";
 
+export const dynamic = "force-dynamic";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const events = getAllEvents();
 

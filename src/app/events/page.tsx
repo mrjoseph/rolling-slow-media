@@ -4,7 +4,7 @@ import EventCard from "@/components/events/EventCard";
 import ContactUs from "@/components/sections/ContactUs";
 import { getAllEvents, getFeaturedEvent } from "@/lib/events";
 
-export const revalidate = 86400;
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Events | Rolling Slow Media",

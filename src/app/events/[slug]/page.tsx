@@ -6,7 +6,7 @@ import EventStructuredData from "@/components/events/EventStructuredData";
 import ContactUs from "@/components/sections/ContactUs";
 import { getAllEvents, getEventBySlug } from "@/lib/events";
 
-export const revalidate = 86400;
+export const dynamic = "force-dynamic";
 
 type EventPageProps = {
   params: Promise<{

@@ -114,55 +114,64 @@ function buildRegentsParkEvent(): EventRecord {
 
 function buildSundayDriveEvent(): EventRecord {
   return {
-    slug: "sunday-drive-aylesbury",
-    series: "Rolling Slow Media presents",
-    title: "Sunday Drive - Aylesbury | Breakfast Included | Limited Cars",
+    slug: "akeman-inn-breakfast-drive-2026",
+    series: "Rolling Slow Drivers Club presents",
+    title: "Rolling Slow Drivers Club Breakfast Drive",
     status: "scheduled",
-    heroDateLabel: "MAY 17TH",
-    dateLabel: "Sunday 17th May 2026",
-    startIso: "2026-05-17T09:00:00+01:00",
-    endIso: "2026-05-17T12:00:00+01:00",
-    time: "7:30 AM",
-    locationName: "The Akeman Inn",
-    addressLine: "Aylesbury",
-    city: "Aylesbury",
-    postcode: "",
+    heroDateLabel: "AUGUST 23RD",
+    dateLabel: "Sunday 23rd August 2026",
+    startIso: "2026-08-23T07:00:00+01:00",
+    endIso: "2026-08-23T12:00:00+01:00",
+    time: "Meet 7:00 AM | Depart 7:30 AM sharp",
+    locationName: "South Mimms Services",
+    addressLine: "Swanland Road",
+    city: "Potters Bar",
+    postcode: "EN6 3QQ",
     summary:
-      "A curated Sunday morning drive for enthusiasts. Limited to 20-25 cars. Breakfast included on arrival.",
+      "A Sunday morning scenic drive through Hertfordshire, Bedfordshire and Buckinghamshire, finishing with breakfast at The Akeman Inn.",
     description:
-      "Join Rolling Slow Media for a small, curated Sunday drive through some of the best local roads, finishing at The Akeman Inn in Aylesbury. This is not a typical car meet. Numbers are limited to keep the group tight, the driving enjoyable, and the experience relaxed.",
-    capacity: "20-25 cars",
-    ticketInfo: "£15 per car (plus Eventbrite fee)",
+      "After a fantastic first drive, Rolling Slow Drivers Club is heading back out for another relaxed Sunday morning run. Enjoy a carefully planned route across some of the best roads in Hertfordshire, Bedfordshire and Buckinghamshire before breakfast at The Akeman Inn in Aylesbury.",
+    capacity: "Strictly limited to 30 cars",
+    ticketInfo: "£15 per car (plus Eventbrite booking fee)",
     ticketUrl: EVENTBRITE_URL,
     logisticsTitle: "What To Expect",
     logistics: [
-      "A pre-planned driving route",
-      "Small group of enthusiast cars (20-25 max)",
-      "Scenic roads and a relaxed pace",
+      "A carefully planned scenic driving route",
+      "Around two hours of enjoyable A roads and country lanes",
+      "A small group of enthusiast cars",
       "Finish at The Akeman Inn, Aylesbury",
-      "Breakfast roll and hot drink included",
+      "Breakfast and a hot drink at The Akeman Inn",
+      "A Rolling Slow Drivers Club welcome pack",
     ],
-    hosts: ["Rolling Slow Media"],
+    hosts: ["Rolling Slow Drivers Club"],
     about: [
-      "This is the first Rolling Slow Media Sunday Drive. Spaces are limited and will not be expanded.",
-      "Start location details are revealed after booking. The route is designed as a social drive for enthusiasts, with a relaxed pace and a proper breakfast finish rather than a crowded static meet.",
-      "Breakfast on arrival includes a bacon or sausage roll plus tea or coffee.",
+      "This is not a typical car meet. It is about getting out and enjoying your car on great roads with a relaxed group of like-minded enthusiasts.",
+      "Whether you come on your own or with friends, you will be joining a welcoming community that enjoys great roads, great cars and good company. Spaces are limited to keep the group enjoyable for everyone.",
     ],
     conductRules: [
       "Enthusiast cars only",
-      "Please arrive on time",
-      "Respect the route, other drivers, and the public",
-      "This is a social drive, not a race",
+      "Arrive with a full tank of fuel and be ready to leave at 7:30 AM sharp",
+      "This is a social drive, not a race — drive responsibly and respect speed limits, local residents and other road users",
+      "There is no convoy requirement or obligation to follow the car in front",
+      "If you become separated from the group, continue using the route provided",
     ],
     disclaimer:
-      "The route is for a relaxed social drive. Drivers are responsible for their own vehicle, conduct, and compliance with road laws throughout the event.",
-    posterImage: "/events/coffee-run.jpg",
-    posterAlt: "Portrait poster artwork for the Sunday Drive to Aylesbury event",
+      "Each driver is responsible for their own vehicle and driving at all times.",
+    posterImage: "/events/akeman-inn-breakfast-drive-23rd-august.jpg",
+    posterAlt: "Flyer for the Rolling Slow Drivers Club Breakfast Drive at The Akeman Inn on 23rd August 2026",
   };
 }
 
-export function getAllEvents(): EventRecord[] {
-  return [buildRegentsParkEvent()];
+function isEventUpcoming(event: EventRecord, now: Date = new Date()): boolean {
+  if (!event.endIso) return true;
+
+  return new Date(event.endIso).getTime() > now.getTime();
+}
+
+export function getAllEvents(now: Date = new Date()): EventRecord[] {
+  return [buildRegentsParkEvent(), buildSundayDriveEvent()].filter((event) =>
+    isEventUpcoming(event, now),
+  );
 }
 
 export function getFeaturedEvent(): EventRecord {

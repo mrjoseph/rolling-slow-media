@@ -7,7 +7,7 @@ import ContactUs from "@/components/sections/ContactUs";
 import SiteHeader from "@/components/SiteHeader";
 import { getAllEvents, getFeaturedEvent } from "@/lib/events";
 
-export const revalidate = 86400;
+export const dynamic = "force-dynamic";
 
 export default function Home() {
   const events = getAllEvents();
