@@ -132,7 +132,7 @@ function buildSundayDriveEvent(): EventRecord {
     description:
       "After a fantastic first drive, Rolling Slow Drivers Club is heading back out for another relaxed Sunday morning run. Enjoy a carefully planned route across some of the best roads in Hertfordshire, Bedfordshire and Buckinghamshire before breakfast at The Akeman Inn in Aylesbury.",
     capacity: "Strictly limited to 30 cars",
-    ticketInfo: "£15 per car (plus Eventbrite booking fee)",
+    ticketInfo: "£20 per car (plus Eventbrite booking fee)",
     ticketUrl: EVENTBRITE_URL,
     logisticsTitle: "What To Expect",
     logistics: [
