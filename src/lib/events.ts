@@ -123,10 +123,10 @@ function buildSundayDriveEvent(): EventRecord {
     startIso: "2026-08-23T07:00:00+01:00",
     endIso: "2026-08-23T12:00:00+01:00",
     time: "Meet 7:00 AM | Depart 7:30 AM sharp",
-    locationName: "South Mimms Services",
-    addressLine: "Swanland Road",
-    city: "Potters Bar",
-    postcode: "EN6 3QQ",
+    locationName: "The Akeman Inn",
+    addressLine: "Aylesbury",
+    city: "Aylesbury",
+    postcode: "",
     summary:
       "A Sunday morning scenic drive through Hertfordshire, Bedfordshire and Buckinghamshire, finishing with breakfast at The Akeman Inn.",
     description:

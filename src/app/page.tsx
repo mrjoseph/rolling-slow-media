@@ -17,7 +17,7 @@ export default function Home() {
     <main className="bg-gradient-to-b from-slate-900 to-slate-800 text-white">
       <SiteHeader />
       <Hero featuredEvent={featuredEvent} />
-      <NextEvent featuredEvent={featuredEvent} events={events} />
+      <NextEvent events={events} />
       <About />
       <Sponsors />
       <ContactUs />
