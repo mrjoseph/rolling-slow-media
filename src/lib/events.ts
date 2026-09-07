@@ -162,6 +162,53 @@ function buildSundayDriveEvent(): EventRecord {
   };
 }
 
+function buildGoodwoodBreakfastDriveEvent(): EventRecord {
+  return {
+    slug: "goodwood-breakfast-drive-2026",
+    series: "Rolling Slow Media presents",
+    title: "Goodwood Breakfast Drive",
+    status: "scheduled",
+    heroDateLabel: "OCTOBER 4TH",
+    dateLabel: "Sunday 4th October 2026",
+    startIso: "2026-10-04T07:00:00+01:00",
+    endIso: "2026-10-04T12:00:00+01:00",
+    time: "Meet 7:00 AM | Depart 7:30 AM sharp",
+    locationName: "Goodwood Motor Circuit",
+    addressLine: "",
+    city: "Chichester",
+    postcode: "",
+    summary:
+      "A scenic breakfast drive on carefully planned roads, finishing at Goodwood Motor Circuit.",
+    description:
+      "Join Rolling Slow Media for a scenic breakfast drive to Goodwood Motor Circuit. We will meet at a private start location before heading out together on a carefully planned route through some of the best driving roads in the area, finishing at Goodwood for breakfast.",
+    capacity: "Strictly limited to 40 cars",
+    ticketInfo: "£10 deposit to secure your place, deducted from your breakfast bill",
+    ticketUrl: EVENTBRITE_URL,
+    logisticsTitle: "Event Details",
+    logistics: [
+      "Meet at 7:00 AM at a private start location, sent after booking",
+      "Depart promptly at 7:30 AM",
+      "A carefully planned route through some of the best driving roads in the area",
+      "Finish at Goodwood Motor Circuit for breakfast",
+      "A £10 deposit secures your place and is deducted from your breakfast bill at Goodwood",
+    ],
+    hosts: ["Rolling Slow Media"],
+    about: [
+      "The aim is simple: good roads, good cars and good company.",
+      "If you enjoy proper driving roads, great cars and meeting other enthusiasts, this should be a very good morning. Places are limited to keep the group enjoyable for everyone.",
+    ],
+    conductRules: [
+      "Enthusiast cars only",
+      "Arrive with a full tank of fuel and be ready to leave at 7:30 AM sharp",
+      "This is a social drive, not a race — drive responsibly, respect local residents and other road users, and always stay within the law",
+    ],
+    disclaimer:
+      "Each driver is responsible for their own vehicle and driving at all times.",
+    posterImage: "/events/BREAKFAS-DRIVE-goodwood.jpg",
+    posterAlt: "Flyer for the Rolling Slow Media Goodwood Breakfast Drive on 4th October 2026",
+  };
+}
+
 function isEventUpcoming(event: EventRecord, now: Date = new Date()): boolean {
   if (!event.endIso) return true;
 
@@ -169,7 +216,11 @@ function isEventUpcoming(event: EventRecord, now: Date = new Date()): boolean {
 }
 
 export function getAllEvents(now: Date = new Date()): EventRecord[] {
-  return [buildRegentsParkEvent(), buildSundayDriveEvent()].filter((event) =>
+  return [
+    buildRegentsParkEvent(),
+    buildSundayDriveEvent(),
+    buildGoodwoodBreakfastDriveEvent(),
+  ].filter((event) =>
     isEventUpcoming(event, now),
   );
 }
