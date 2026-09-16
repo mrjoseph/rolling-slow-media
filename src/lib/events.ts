@@ -112,8 +112,9 @@ function buildRegentsParkEvent(): EventRecord {
   };
 }
 
-function buildSundayDriveEvent(): EventRecord {
-  return {
+// Add each one-off event here. Past records remain in this collection so their
+// pages, structured data, and search visibility are retained in the archive.
+const sundayDriveEvent: EventRecord = {
     slug: "akeman-inn-breakfast-drive-2026",
     series: "Rolling Slow Drivers Club presents",
     title: "Rolling Slow Drivers Club Breakfast Drive",
@@ -159,11 +160,52 @@ function buildSundayDriveEvent(): EventRecord {
       "Each driver is responsible for their own vehicle and driving at all times.",
     posterImage: "/events/akeman-inn-breakfast-drive-23rd-august.jpg",
     posterAlt: "Flyer for the Rolling Slow Drivers Club Breakfast Drive at The Akeman Inn on 23rd August 2026",
-  };
-}
+};
 
-function buildGoodwoodBreakfastDriveEvent(): EventRecord {
-  return {
+const firstSundayDriveEvent: EventRecord = {
+    slug: "sunday-drive-aylesbury-2026",
+    series: "Rolling Slow Media presents",
+    title: "Sunday Drive - Aylesbury",
+    status: "scheduled",
+    heroDateLabel: "MAY 17TH",
+    dateLabel: "Sunday 17th May 2026",
+    startIso: "2026-05-17T07:30:00+01:00",
+    endIso: "2026-05-17T12:00:00+01:00",
+    time: "Meet 7:30 AM",
+    locationName: "The Akeman Inn",
+    addressLine: "Aylesbury",
+    city: "Aylesbury",
+    postcode: "",
+    summary:
+      "A curated Sunday morning drive for enthusiasts, finishing with breakfast at The Akeman Inn.",
+    description:
+      "Rolling Slow Media's first Sunday Drive took a small group of enthusiasts through some of the best local roads before breakfast at The Akeman Inn in Aylesbury.",
+    capacity: "20-25 cars",
+    ticketInfo: "Event completed",
+    logisticsTitle: "What To Expect",
+    logistics: [
+      "A pre-planned driving route",
+      "A small group of enthusiast cars",
+      "Scenic roads and a relaxed pace",
+      "Breakfast at The Akeman Inn, Aylesbury",
+    ],
+    hosts: ["Rolling Slow Media"],
+    about: [
+      "This was the first Rolling Slow Media Sunday Drive, created as a relaxed social drive for enthusiasts rather than a crowded static meet.",
+      "The route finished with breakfast and good company at The Akeman Inn.",
+    ],
+    conductRules: [
+      "Enthusiast cars only",
+      "This was a social drive, not a race",
+      "Drivers were responsible for their own vehicle and conduct",
+    ],
+    disclaimer:
+      "This event has now finished. Drivers were responsible for their own vehicle, conduct, and compliance with road laws throughout the event.",
+    posterImage: "/events/coffee-run.jpg",
+    posterAlt: "Poster artwork for the Rolling Slow Media Sunday Drive to Aylesbury on 17th May 2026",
+};
+
+const goodwoodBreakfastDriveEvent: EventRecord = {
     slug: "goodwood-breakfast-drive-2026",
     series: "Rolling Slow Media presents",
     title: "Goodwood Breakfast Drive",
@@ -206,27 +248,37 @@ function buildGoodwoodBreakfastDriveEvent(): EventRecord {
       "Each driver is responsible for their own vehicle and driving at all times.",
     posterImage: "/events/BREAKFAS-DRIVE-goodwood.jpg",
     posterAlt: "Flyer for the Rolling Slow Media Goodwood Breakfast Drive on 4th October 2026",
-  };
+};
+
+export function isEventPast(event: EventRecord, now: Date = new Date()): boolean {
+  if (!event.endIso) return false;
+
+  return new Date(event.endIso).getTime() <= now.getTime();
 }
 
-function isEventUpcoming(event: EventRecord, now: Date = new Date()): boolean {
-  if (!event.endIso) return true;
-
-  return new Date(event.endIso).getTime() > now.getTime();
-}
-
-export function getAllEvents(now: Date = new Date()): EventRecord[] {
+export function getAllEvents(): EventRecord[] {
   return [
     buildRegentsParkEvent(),
-    buildSundayDriveEvent(),
-    buildGoodwoodBreakfastDriveEvent(),
-  ].filter((event) =>
-    isEventUpcoming(event, now),
-  );
+    sundayDriveEvent,
+    firstSundayDriveEvent,
+    goodwoodBreakfastDriveEvent,
+  ];
+}
+
+export function getUpcomingEvents(now: Date = new Date()): EventRecord[] {
+  return getAllEvents()
+    .filter((event) => !isEventPast(event, now))
+    .sort((a, b) => (a.startIso ?? "").localeCompare(b.startIso ?? ""));
+}
+
+export function getPastEvents(now: Date = new Date()): EventRecord[] {
+  return getAllEvents()
+    .filter((event) => isEventPast(event, now))
+    .sort((a, b) => (b.startIso ?? "").localeCompare(a.startIso ?? ""));
 }
 
 export function getFeaturedEvent(): EventRecord {
-  const events = getAllEvents();
+  const events = getUpcomingEvents();
   return events.find((event) => event.featured) ?? events[0];
 }
 

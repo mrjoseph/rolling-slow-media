@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import SiteHeader from "@/components/SiteHeader";
 import EventCard from "@/components/events/EventCard";
 import ContactUs from "@/components/sections/ContactUs";
-import { getAllEvents, getFeaturedEvent } from "@/lib/events";
+import { getFeaturedEvent, getPastEvents, getUpcomingEvents } from "@/lib/events";
 
 export const dynamic = "force-dynamic";
 
@@ -16,7 +16,8 @@ export const metadata: Metadata = {
 };
 
 export default function EventsPage() {
-  const events = getAllEvents();
+  const upcomingEvents = getUpcomingEvents();
+  const pastEvents = getPastEvents();
   const featuredEvent = getFeaturedEvent();
 
   return (
@@ -50,10 +51,28 @@ export default function EventsPage() {
       <section className="px-4 pb-20">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-8 md:grid-cols-2">
-            {events.map((event) => (
+            {upcomingEvents.map((event) => (
               <EventCard key={event.slug} event={event} />
             ))}
           </div>
+
+          {pastEvents.length > 0 ? (
+            <div className="mt-16">
+              <div className="mb-8 text-center">
+                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-gray-400">
+                  Event Archive
+                </p>
+                <h2 className="mt-3 text-4xl text-white" style={{ fontFamily: "'Ostrich Sans Heavy', sans-serif" }}>
+                  Past Events
+                </h2>
+              </div>
+              <div className="grid gap-8 md:grid-cols-2">
+                {pastEvents.map((event) => (
+                  <EventCard key={event.slug} event={event} />
+                ))}
+              </div>
+            </div>
+          ) : null}
         </div>
       </section>
 

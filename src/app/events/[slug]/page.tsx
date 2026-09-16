@@ -4,7 +4,7 @@ import SiteHeader from "@/components/SiteHeader";
 import EventDetail from "@/components/events/EventDetail";
 import EventStructuredData from "@/components/events/EventStructuredData";
 import ContactUs from "@/components/sections/ContactUs";
-import { getAllEvents, getEventBySlug } from "@/lib/events";
+import { getAllEvents, getEventBySlug, isEventPast } from "@/lib/events";
 
 export const dynamic = "force-dynamic";
 
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: EventPageProps): Promise<Meta
   }
 
   return {
-    title: `${event.title} | Rolling Slow Media`,
+    title: `${isEventPast(event) ? "Past Event: " : ""}${event.title} | Rolling Slow Media`,
     description: event.description,
     alternates: {
       canonical: `https://www.rollingslowmedia.com/events/${event.slug}`,

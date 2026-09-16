@@ -5,12 +5,12 @@ import About from "@/components/sections/About";
 import Sponsors from "@/components/sections/Sponsors";
 import ContactUs from "@/components/sections/ContactUs";
 import SiteHeader from "@/components/SiteHeader";
-import { getAllEvents, getFeaturedEvent } from "@/lib/events";
+import { getFeaturedEvent, getUpcomingEvents } from "@/lib/events";
 
 export const dynamic = "force-dynamic";
 
 export default function Home() {
-  const events = getAllEvents();
+  const events = getUpcomingEvents();
   const featuredEvent = getFeaturedEvent();
 
   return (

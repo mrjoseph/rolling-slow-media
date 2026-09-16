@@ -1,11 +1,12 @@
 import Link from "next/link";
-import type { EventRecord } from "@/lib/events";
+import { isEventPast, type EventRecord } from "@/lib/events";
 
 type EventDetailProps = {
   event: EventRecord;
 };
 
 export default function EventDetail({ event }: EventDetailProps) {
+  const past = isEventPast(event);
   const locationLine = [event.locationName, event.addressLine, event.city, event.postcode]
     .filter(Boolean)
     .join(", ");
@@ -142,7 +143,7 @@ export default function EventDetail({ event }: EventDetailProps) {
             <div className="rounded-2xl border border-white/10 bg-slate-900/80 p-6">
               <p className="text-sm uppercase tracking-[0.2em] text-gray-400">Capacity</p>
               <p className="mt-2 text-xl font-semibold text-white">{event.capacity}</p>
-              {event.ticketUrl ? (
+              {event.ticketUrl && !past ? (
                 <a
                   href={event.ticketUrl}
                   target="_blank"
@@ -151,6 +152,10 @@ export default function EventDetail({ event }: EventDetailProps) {
                 >
                   Reserve Your Spot
                 </a>
+              ) : past ? (
+                <p className="mt-6 text-sm font-semibold uppercase tracking-[0.16em] text-gray-400">
+                  This event has finished
+                </p>
               ) : (
                 <Link
                   href="/#contact"

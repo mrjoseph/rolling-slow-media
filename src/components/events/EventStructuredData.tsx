@@ -1,4 +1,4 @@
-import type { EventRecord } from "@/lib/events";
+import { isEventPast, type EventRecord } from "@/lib/events";
 
 type EventStructuredDataProps = {
   event: EventRecord;
@@ -15,7 +15,9 @@ export default function EventStructuredData({ event }: EventStructuredDataProps)
     name: event.title,
     startDate: event.startIso,
     endDate: event.endIso,
-    eventStatus: "https://schema.org/EventScheduled",
+    eventStatus: isEventPast(event)
+      ? "https://schema.org/EventCompleted"
+      : "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     location: {
       "@type": "Place",

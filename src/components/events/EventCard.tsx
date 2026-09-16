@@ -1,11 +1,13 @@
 import Link from "next/link";
-import type { EventRecord } from "@/lib/events";
+import { isEventPast, type EventRecord } from "@/lib/events";
 
 type EventCardProps = {
   event: EventRecord;
 };
 
 export default function EventCard({ event }: EventCardProps) {
+  const past = isEventPast(event);
+
   return (
     <article className="overflow-hidden rounded-2xl border border-white/10 bg-slate-900/75 shadow-2xl shadow-black/20">
       <div className="aspect-[4/5] overflow-hidden bg-slate-800">
@@ -19,7 +21,7 @@ export default function EventCard({ event }: EventCardProps) {
       <div className="space-y-4 p-6">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-red-300">
-            {event.status === "coming-soon" ? "Coming Soon" : "Scheduled"}
+            {past ? "Event Archive" : event.status === "coming-soon" ? "Coming Soon" : "Scheduled"}
           </p>
           <h2 className="mt-3 text-3xl text-white" style={{ fontFamily: "'Ostrich Sans Heavy', sans-serif" }}>
             {event.title}
@@ -43,7 +45,7 @@ export default function EventCard({ event }: EventCardProps) {
           >
             View Details
           </Link>
-          {event.ticketUrl ? (
+          {event.ticketUrl && !past ? (
             <a
               href={event.ticketUrl}
               target="_blank"
@@ -52,6 +54,10 @@ export default function EventCard({ event }: EventCardProps) {
             >
               Get Tickets
             </a>
+          ) : past ? (
+            <span className="inline-flex items-center justify-center rounded-lg border border-white/15 px-5 py-3 font-semibold text-gray-400">
+              Event Completed
+            </span>
           ) : null}
         </div>
       </div>
