@@ -102,8 +102,8 @@ function buildRegentsParkEvent(): EventRecord {
       footnote:
         "This offer is exclusive to our Cars & Coffee event and available throughout the morning. Please show your ticket to staff.",
     },
-    posterImage: "/events/flyer2-september.jpg",
-    posterAlt: "Portrait poster artwork for the Regent's Park Cars & Coffee event",
+    posterImage: "/events/october-26-flyer.jpg",
+    posterAlt: "Flyer for the Regent's Park Cars & Coffee event on 11th October 2026",
     mediaVideo: {
       src: "/video/PSMC-landscape(1).mp4",
       poster: "/video/PSMC-landscape(1)-Cover.jpg",
