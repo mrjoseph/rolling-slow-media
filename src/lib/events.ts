@@ -102,7 +102,7 @@ function buildRegentsParkEvent(): EventRecord {
       footnote:
         "This offer is exclusive to our Cars & Coffee event and available throughout the morning. Please show your ticket to staff.",
     },
-    posterImage: "/events/PSMC-08-11-2026.jpg",
+    posterImage: "/events/Porsches-superecars-regents-park.png",
     posterAlt: "Flyer for the Regent's Park Porsches, Supercars & Modern Classics Cars & Coffee event on 8th November 2026",
     mediaVideo: {
       src: "/video/PSMC-landscape(1).mp4",
