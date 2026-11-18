@@ -9,6 +9,8 @@ export default function EventStructuredData({ event }: EventStructuredDataProps)
     return null;
   }
 
+  const isRegentsPark = event.slug === "regents-park-cars-and-coffee";
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "Event",
@@ -29,6 +31,13 @@ export default function EventStructuredData({ event }: EventStructuredDataProps)
         postalCode: event.postcode,
         addressCountry: "GB",
       },
+      ...(isRegentsPark && {
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: 51.5267,
+          longitude: -0.1545,
+        },
+      }),
     },
     organizer: {
       "@type": "Organization",
@@ -37,6 +46,20 @@ export default function EventStructuredData({ event }: EventStructuredDataProps)
     },
     image: [`https://www.rollingslowmedia.com${event.posterImage}`],
     description: event.description,
+    isAccessibleForFree: true,
+    ...(event.status !== "coming-soon" && { offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "GBP",
+      availability: "https://schema.org/InStock",
+      url: event.ticketUrl ?? "https://www.rollingslowmedia.com/events",
+      validFrom: event.startIso,
+    } }),
+    audience: {
+      "@type": "Audience",
+      audienceType: "Car enthusiasts, Porsche fans, supercar fans, London tourists, automotive enthusiasts",
+    },
+    keywords: "cars and coffee London, Porsche meet, supercar event, London car event, Regent's Park, free London events",
   };
 
   return (

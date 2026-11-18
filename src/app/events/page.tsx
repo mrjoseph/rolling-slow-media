@@ -7,9 +7,20 @@ import { getFeaturedEvent, getPastEvents, getUpcomingEvents } from "@/lib/events
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Events | Rolling Slow Media",
+  title: "London Car Events | Cars & Coffee, Porsche Meets & Supercar Gatherings | Rolling Slow Media",
   description:
-    "Browse Rolling Slow Media events including Cars & Coffee gatherings, Porsche meets, supercar events, and upcoming community launches.",
+    "Browse Rolling Slow Media's London car events — monthly cars and coffee at Regent's Park featuring Porsches, supercars and modern classics. Free entry. Perfect for car enthusiasts and tourists visiting London.",
+  keywords: [
+    "London car events",
+    "cars and coffee London",
+    "Regent's Park car meet",
+    "Porsche meet London",
+    "supercar events London",
+    "free London events",
+    "things to do in London on Sunday",
+    "London car show",
+    "modern classics London",
+  ],
   alternates: {
     canonical: "https://www.rollingslowmedia.com/events",
   },
