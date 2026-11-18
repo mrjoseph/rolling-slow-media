@@ -45,7 +45,11 @@ export default function EventCard({ event }: EventCardProps) {
           >
             View Details
           </Link>
-          {event.ticketUrl && !past ? (
+          {event.interestUrl && !past ? (
+            <a href={event.interestUrl} className="inline-flex items-center justify-center rounded-lg border border-white/15 px-5 py-3 font-semibold text-white transition-colors hover:border-white/40">
+              Register Your Interest
+            </a>
+          ) : event.ticketUrl && !past ? (
             <a
               href={event.ticketUrl}
               target="_blank"

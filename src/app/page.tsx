@@ -4,6 +4,7 @@ import NextEvent from "@/components/sections/NextEvent";
 import About from "@/components/sections/About";
 import Sponsors from "@/components/sections/Sponsors";
 import ContactUs from "@/components/sections/ContactUs";
+import RegisterInterest from "@/components/sections/RegisterInterest";
 import SiteHeader from "@/components/SiteHeader";
 import { getFeaturedEvent, getUpcomingEvents } from "@/lib/events";
 
@@ -18,6 +19,7 @@ export default function Home() {
       <SiteHeader />
       <Hero featuredEvent={featuredEvent} />
       <NextEvent events={events} />
+      <RegisterInterest />
       <About />
       <Sponsors />
       <ContactUs />

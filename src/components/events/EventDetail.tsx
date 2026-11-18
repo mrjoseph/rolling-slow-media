@@ -143,7 +143,11 @@ export default function EventDetail({ event }: EventDetailProps) {
             <div className="rounded-2xl border border-white/10 bg-slate-900/80 p-6">
               <p className="text-sm uppercase tracking-[0.2em] text-gray-400">Capacity</p>
               <p className="mt-2 text-xl font-semibold text-white">{event.capacity}</p>
-              {event.ticketUrl && !past ? (
+              {event.interestUrl && !past ? (
+                <a href={event.interestUrl} className="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-red-600 px-5 py-3 font-semibold text-white transition-colors hover:bg-red-700">
+                  Register Your Interest
+                </a>
+              ) : event.ticketUrl && !past ? (
                 <a
                   href={event.ticketUrl}
                   target="_blank"

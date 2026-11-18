@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { trackEvent } from "@/components/GoogleAnalytics";
 import { EVENTBRITE_URL, type EventRecord } from "@/lib/events";
 
@@ -59,7 +60,7 @@ export default function Hero({ featuredEvent }: HeroProps) {
 
       <div className="absolute inset-0 bg-black/50" />
 
-      <div className="relative z-10 mx-auto max-w-5xl text-center">
+      <div className="relative z-10 mx-auto w-full max-w-7xl text-center">
         <h1
           className="mb-6 text-6xl leading-tight text-white md:text-7xl"
           style={{ fontFamily: "'Ostrich Sans Heavy', sans-serif", fontWeight: 900 }}
@@ -77,7 +78,7 @@ export default function Hero({ featuredEvent }: HeroProps) {
           passion behind every engine.
         </p>
 
-        <div className="mb-10">
+        <div className="mb-10 grid gap-6 xl:grid-cols-2">
           <Link
             href={`/events/${featuredEvent.slug}`}
             onClick={() =>
@@ -85,7 +86,7 @@ export default function Hero({ featuredEvent }: HeroProps) {
             }
             className="group inline-block max-w-4xl rounded-2xl border border-white/10 bg-slate-900/55 p-4 transition-all duration-300 hover:bg-slate-700/50"
           >
-            <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_220px] md:items-center">
+            <div className="grid h-full gap-4 md:grid-cols-[minmax(0,1fr)_220px] md:items-center xl:grid-cols-[minmax(0,1fr)_180px]">
               <div className="text-left">
                 <p className="text-sm font-semibold uppercase tracking-[0.3em] text-red-300">
                   Featured Event
@@ -116,6 +117,35 @@ export default function Hero({ featuredEvent }: HeroProps) {
               </div>
             </div>
           </Link>
+          <a
+            href="#register-interest"
+            onClick={() => handleCTAClick("Wales Driving Tour Flyer", "#register-interest")}
+            aria-label="Register your interest in the Wales Driving Tour, 19–21 March 2027"
+            className="group block rounded-2xl border border-white/10 bg-slate-900/55 p-4 transition-all duration-300 hover:bg-slate-700/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e35e9f]"
+          >
+            <div className="grid h-full gap-4 md:grid-cols-[minmax(0,1fr)_220px] md:items-center xl:grid-cols-[minmax(0,1fr)_180px]">
+              <div className="text-left">
+                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-red-300">Featured Event</p>
+                <h2 className="mt-3 text-3xl text-white md:text-4xl" style={{ fontFamily: "'Ostrich Sans Heavy', sans-serif" }}>
+                  Wales Driving Tour
+                </h2>
+                <p className="mt-3 text-base font-semibold uppercase tracking-wide text-gray-200">19–21 March 2027</p>
+                <p className="mt-2 text-sm text-gray-300">Wales</p>
+                <p className="mt-4 text-sm text-gray-400">Register your interest in our Wales Driving Tour and receive updates as plans are announced.</p>
+                <p className="mt-4 text-sm font-semibold text-[#e35e9f]">Register your interest →</p>
+              </div>
+              <div className="mx-auto w-full max-w-[220px] overflow-hidden rounded-xl border border-white/10 bg-slate-800/80 shadow-2xl">
+                <Image
+              src="/events/WALES-DRIVE-MARCH-2027.jpg"
+              alt="Wales Driving Tour flyer, 19–21 March 2027"
+              width={2160}
+              height={2700}
+              sizes="(min-width: 1280px) 180px, 220px"
+              className="h-auto w-full"
+            />
+              </div>
+            </div>
+          </a>
         </div>
 
         <div className="mb-6 flex flex-wrap justify-center gap-4">

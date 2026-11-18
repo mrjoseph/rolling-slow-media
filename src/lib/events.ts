@@ -24,6 +24,7 @@ export type EventRecord = {
   capacity: string;
   ticketInfo: string;
   ticketUrl?: string;
+  interestUrl?: string;
   logisticsTitle: string;
   logistics: string[];
   hosts: string[];
@@ -295,6 +296,39 @@ const goodwoodBreakfastDriveNovEvent: EventRecord = {
     posterAlt: "Flyer for the Rolling Slow Media Goodwood Breakfast Drive on 15th November 2026",
 };
 
+const walesDrivingTourEvent: EventRecord = {
+  slug: "wales-driving-tour-march-2027",
+  series: "Rolling Slow Media presents",
+  title: "Wales Driving Tour",
+  status: "coming-soon",
+  heroDateLabel: "19–21 MARCH 2027",
+  dateLabel: "19–21 March 2027",
+  startIso: "2027-03-19",
+  endIso: "2027-03-21T23:59:59+00:00",
+  time: "Times to be announced",
+  locationName: "Route to be announced",
+  addressLine: "",
+  city: "Wales",
+  postcode: "",
+  summary: "Scenic drives, amazing roads and great company in Wales. Register your interest for updates.",
+  description: "Join Rolling Slow Media for the Wales Driving Tour, 19–21 March 2027. Register your interest to receive updates as plans are announced.",
+  capacity: "To be announced",
+  ticketInfo: "Register your interest — booking details to be announced",
+  interestUrl: "/#register-interest",
+  logisticsTitle: "Tour Details",
+  logistics: [
+    "19–21 March 2027 in Wales",
+    "Scenic drives, amazing roads and great company",
+    "Route, meeting times and booking details to be announced",
+  ],
+  hosts: ["Rolling Slow Media"],
+  about: ["Enjoy a driving tour in Wales with fellow car enthusiasts. Sign up to receive more information as plans are announced."],
+  conductRules: ["Drive responsibly and respect speed limits, local residents and other road users"],
+  disclaimer: "Each driver is responsible for their own vehicle and driving at all times.",
+  posterImage: "/events/WALES-DRIVE-MARCH-2027.jpg",
+  posterAlt: "Flyer for the Wales Driving Tour, 19–21 March 2027",
+};
+
 export function isEventPast(event: EventRecord, now: Date = new Date()): boolean {
   if (!event.endIso) return false;
 
@@ -308,6 +342,7 @@ export function getAllEvents(): EventRecord[] {
     firstSundayDriveEvent,
     goodwoodBreakfastDriveEvent,
     goodwoodBreakfastDriveNovEvent,
+    walesDrivingTourEvent,
   ];
 }
 
